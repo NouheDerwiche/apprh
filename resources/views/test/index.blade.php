@@ -875,8 +875,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <div class="cursor-pointer symbol symbol-35px symbol-lg-35px"
                                         data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                                         data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-26.jpg')}}">
-                                    </div>
+                                        <img src="{{ asset('storage/assets/media/avatars/' . Auth::user()->avatar) }}" >                                    </div>
 
                                     <!--begin::User account menu-->
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
@@ -886,8 +885,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <div class="menu-content d-flex align-items-center px-3">
                                                 <!--begin::Avatar-->
                                                 <div class="symbol symbol-50px me-5">
-                                                    <img alt="Logo" src="{{asset('assets/media/avatars/300-26.jpg')}}">
-                                                </div>
+                                                    <img src="{{ asset('storage/assets/media/avatars/' . Auth::user()->avatar) }}" >                                                </div>
                                                 <!--end::Avatar-->
 
                                                 <!--begin::Username-->

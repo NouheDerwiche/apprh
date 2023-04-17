@@ -71,7 +71,10 @@ class userController extends Controller
             'codepostal' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
+            'avatar' =>'required'
+
+
         ]);
 
         $input = $request->all();
@@ -80,7 +83,23 @@ class userController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
-        
+
+
+// Vérifier si l'utilisateur a téléchargé une image
+if ($request->hasFile('avatar')) {
+    // Obtenir le fichier image téléchargé
+    $avatar = $request->file('avatar');
+
+    // Générer un nom de fichier unique
+    $filename = time() . '_' . uniqid() . '.' . $avatar->getClientOriginalExtension();
+
+    // Stocker l'image dans le dossier de destination
+    $avatar->storeAs('public/assets/media/avatars', $filename);
+
+    // Ajouter le nom du fichier à l'entrée utilisateur
+    $input['avatar'] = $filename;
+}
+
         return redirect()->route('users.index')
                         ->with('success','Utilisateur créé avec succès');
     }

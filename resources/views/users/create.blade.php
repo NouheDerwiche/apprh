@@ -106,6 +106,16 @@
             {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
         </div>
     </div>
+
+
+    <div class="form-group">
+        <label for="avatar">Avatar</label>
+        <input type="file" name="avatar" class="form-control-file @error('avatar') is-invalid @enderror">
+        @error('avatar')
+            <span class="invalid-feedback">{{ $message }}</span>
+        @enderror
+    </div>
+
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Enregistrer</button>
     </div>
