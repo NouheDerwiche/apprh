@@ -887,7 +887,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <div class="symbol symbol-50px me-5">
                                                     <img src="{{ asset('storage/assets/media/avatars/' . Auth::user()->avatar) }}" >                                                </div>
                                                 <!--end::Avatar-->
-
+{{-- Btest --}}
                                                 <!--begin::Username-->
                                                 <div class="d-flex flex-column">
                                                     <div class="fw-bold d-flex align-items-center fs-5">
