@@ -124,7 +124,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="w-lg-500px p-10 p-lg-15 mx-auto">
 
 <!--begin::Form-->
-<form class="form w-100" novalidate="novalidate" method="POST" action="{{ route('forget.password.post') }}" id="kt_password_reset_form">
+
+<form class="form w-100" novalidate="novalidate" method="POST" action="{{ route('password.email') }} ">
     @csrf
     <!--begin::Heading-->
     <div class="text-center mb-10">
@@ -142,23 +143,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <!--begin::Heading-->
     <div class="fv-row mb-10">
-        <label class="form-label fw-bold text-gray-900 fs-6">{{ __('Email') }}</label>
+        <label for="email" class="form-label fw-bold text-gray-900 fs-6">{{ __('Email') }}</label>
             <x-text-input id="email" class="form-control form-control-solid" type="email" name="email" :value="old('email')" required autofocus />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
     </div>
     <div class="d-flex flex-wrap justify-content-center pb-lg-0">
-        <button type="button" id="kt_password_reset_submit" class="btn btn-lg btn-primary fw-bold me-4">
-            <span class="indicator-label">
-{{ __('    Submit') }}
-            </span>
-            <span class="indicator-progress">
-               {{ (' Please wait...') }} <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-            </span>
+    <div class="flex items-center justify-end mt-4">
+        <button  class="btn btn-lg btn-primary fw-bold me-4">
+
+            {{ __('submit') }}
+
         </button>
 
-        <a href="dashboard" class="btn btn-lg btn-light-primary fw-bold">Cancel</a>
-    </div>
 
+        <a href={{ route('login') }} class="btn btn-lg btn-primary fw-bold me-4">Cancel</a>
+    </div>
+    </div>
 </form>
             </div>
             <!--end::Wrapper-->

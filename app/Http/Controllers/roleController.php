@@ -31,7 +31,14 @@ class roleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::orderBy('id','DESC')->paginate(5);
+        $roles = Role::where([['name', '!=',NULL],[function($query)use ($request){
+            if(($term = $request->term)){
+                $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
+            }
+           }]])
+
+
+           ->orderBy('id','DESC')->paginate(5);
         return view('roles.index',compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -64,7 +71,7 @@ class roleController extends Controller
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
-                        ->with('success','Role created successfully');
+                        ->with('success','Rôle créé avec succès');
     }
     /**
      * Display the specified resource.
@@ -120,7 +127,7 @@ class roleController extends Controller
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
-                        ->with('success','Role updated successfully');
+                        ->with('success','Rôle mis à jour avec succès');
     }
     /**
      * Remove the specified resource from storage.
@@ -132,6 +139,6 @@ class roleController extends Controller
     {
         DB::table("roles")->where('id',$id)->delete();
         return redirect()->route('roles.index')
-                        ->with('success','Role deleted successfully');
+                        ->with('success','Rôle supprimé avec succès');
     }
 }

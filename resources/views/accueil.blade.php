@@ -10,7 +10,7 @@
             <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
                 <!--begin::Title-->
                 <h1 class="text-dark fw-bold my-1 fs-2">
-                    Dashboard <small class="text-muted fs-6 fw-normal ms-1"></small>
+                    Tableau de bord  <small class="text-muted fs-6 fw-normal ms-1"></small>
                 </h1>
                 <!--end::Title-->
 
@@ -22,7 +22,7 @@
                     </li>
 
                     <li class="breadcrumb-item text-muted">
-                        Dashboards </li>
+                        tableau de baord  </li>
 
                     <li class="breadcrumb-item text-dark">
                         Multipurpose </li>

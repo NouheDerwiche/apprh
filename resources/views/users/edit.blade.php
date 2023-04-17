@@ -1,6 +1,6 @@
 @extends('test.index')
 @section('content')
-<div class="row">
+<div class="fv-row mb-10">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2>Edit New User</h2>
@@ -14,7 +14,7 @@
 
 @if (count($errors) > 0)
   <div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    Oups !</strong> Il y a eu des problèmes avec votre entrée.<br><br>
     <ul>
        @foreach ($errors->all() as $error)
          <li>{{ $error }}</li>
@@ -28,8 +28,56 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Name:</strong>
+            <strong>Nom:</strong>
             {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Prénom:</strong>
+            {!! Form::text('prenom', null, array('placeholder' => 'prenom','class' => 'form-control')) !!}
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Téléphone:</strong>
+                {!! Form::text('phone', null, array('placeholder' => 'phone','class' => 'form-control')) !!}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Address:</strong>
+            {!! Form::text('address', null, array('placeholder' => 'address','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Cin:</strong>
+            {!! Form::text('cin', null, array('placeholder' => 'cin','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Matricule:</strong>
+            {!! Form::text('num_emp', null, array('placeholder' => 'num_emp','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Ville:</strong>
+            {!! Form::text('ville', null, array('placeholder' => 'ville','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Code postal:</strong>
+            {!! Form::text('codepostal', null, array('placeholder' => 'codepostal','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Date de naissance:</strong>
+            {!! Form::text('date_naiss', null, array('placeholder' => 'date_naiss','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -53,7 +101,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Role:</strong>
-            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
+            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

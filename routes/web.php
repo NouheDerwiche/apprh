@@ -1,13 +1,16 @@
 <?php
 
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\ProfileController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\roleController;
+use App\Http\Controllers\userController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\newpdwController;
-use App\Http\Controllers\userController;
-use App\Http\Controllers\roleController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HolidayController;
+use App\Http\Controllers\LeavesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,17 +22,12 @@ use App\Http\Controllers\roleController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/accueil', '\App\Http\Controllers\indexController@index',)->middleware('auth');
+
+Route::get('/', '\App\Http\Controllers\indexController@index',)->middleware('auth');
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
 
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,18 +36,33 @@ Route::middleware('auth')->group(function () {
 
 
 
+
 });
 Route::group(['middleware' => ['auth']], function() {
+
     Route::resource('roles', roleController::class);
     Route::resource('users', userController::class);
+    Route::resource('myprofile',myprofileController ::class);
 
 });
 
+// ----------------------------- form holiday ------------------------------//
+Route::controller(HolidayController::class)->group(function () {
+    Route::get('form/holidays/new', 'holiday')->middleware('auth')->name('form/holidays/new');
+    Route::post('form/holidays/save', 'saveRecord')->middleware('auth')->name('form/holidays/save');
+    Route::post('form/holidays/update', 'updateRecord')->middleware('auth')->name('form/holidays/update');
+});
 
-Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
-Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+// ----------------------------- form leaves ------------------------------//
+Route::controller(LeavesController::class)->group(function () {
+    Route::get('form/leavesettings/page', 'leaveSettings')->middleware('auth')->name('form/leavesettings/page');
+    Route::get('form/leaves/new', 'leaves')->middleware('auth')->name('form/leaves/new');
+    Route::get('form/leavesemployee/new', 'leavesEmployee')->middleware('auth')->name('form/leavesemployee/new');
+    Route::post('form/leaves/save', 'saveRecord')->middleware('auth')->name('form/leaves/save');
+    Route::post('form/leaves/edit', 'editRecordLeave')->middleware('auth')->name('form/leaves/edit');
+    Route::post('form/leaves/edit/delete','deleteLeave')->middleware('auth')->name('form/leaves/edit/delete');
+});
+
 
 
 require __DIR__.'/auth.php';

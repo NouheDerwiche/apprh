@@ -19,10 +19,27 @@ class userController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
-        return view('users.index',compact('data'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+
+       $data = User::where([['num_emp', '!=',NULL],[function($query)use ($request){
+        if(($term = $request->term)){
+            $query->orWhere('num_emp', 'LIKE', '%' . $term . '%')->get();
+        }
+       }]])
+
+
+       ->orderBy('id','DESC')->paginate(6);
+
+
+     return view('users.index',compact('data'))->with('i', ($request->input('page', 1) - 1) * 6);
+
+       //$data = User::paginate(5);
+       //return view('users.index', ['users' => $data]);
+
     }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -45,6 +62,13 @@ class userController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'prenom' => 'required',
+            'phone' => 'required',
+            'date_naiss' => 'required',
+            'num_emp' => 'required',
+            'address' => 'required',
+            'ville' => 'required',
+            'codepostal' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
@@ -56,8 +80,9 @@ class userController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
+        
         return redirect()->route('users.index')
-                        ->with('success','User created successfully');
+                        ->with('success','Utilisateur créé avec succès');
     }
 
     /**
@@ -100,6 +125,7 @@ class userController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
+            'prenom' => 'required',
             'roles' => 'required'
         ]);
 
@@ -117,7 +143,7 @@ class userController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+                        ->with('success','Utilisateur mis à jour avec succès');
     }
 
     /**
@@ -126,10 +152,27 @@ class userController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        User::find($id)->delete();
-        return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
-    }
+  public function destroy($id)
+{
+    $user = User::find($id);
+    session()->flash('warning', 'Vous êtes sur le point de supprimer l\'utilisateur ' . $user->name);
+    $user->delete();
+    return redirect()->route('users.index')->with('success', 'Utilisateur supprimé avec succès');
+}
+public function search(Request $request)
+{
+    $search = $request->input('search');
+    $data = User::where('name', 'LIKE', '%' . $search . '%')
+                ->orWhere('email', 'LIKE', '%' . $search . '%')
+                ->paginate(1);
+    return view('users.index', compact('data'))
+                ->with('i', (request()->input('page', 1) - 1) * 1);
+}
+
+
+
+
+
+
+
 }
