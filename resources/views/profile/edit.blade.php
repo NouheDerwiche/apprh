@@ -108,7 +108,16 @@
                     <div class="d-flex flex-column">
                         <div class="fs-2 fw-bold mb-1">{{ Auth::user()->name }}</div>
                         <a href="#" class="text-gray-400 text-hover-primary fs-6 fw-semibold mb-5">{{ Auth::user()->email }}</a>
-                        <div class="badge badge-light-success text-success fw-bold fs-7 me-auto mb-3 px-4 py-3">admin</div>
+                        <div class="badge badge-light-success text-success fw-bold fs-7 me-auto mb-3 px-4 py-3"><?php
+                            // Inclure le code pour récupérer le nom de rôle de l'utilisateur
+                            // (remplacer le code par le code que je vous ai donné)
+                            $user = auth()->user();
+                            $roles = $user->roles;
+                            foreach ($roles as $role) {
+                                $roleName = $role->name;
+                                echo "" . $roleName;
+                            }
+                        ?></div>
                     </div>
                     <!--end::Profile-->
                 </div>

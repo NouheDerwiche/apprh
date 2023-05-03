@@ -1,70 +1,82 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Holiday;
-use DB;
+use App\Models\User;
 
 class HolidayController extends Controller
 {
-    // holidays
-    public function holiday()
+
+
+
+    function __construct()
     {
-        $holiday = Holiday::all();
-        return view('form.holidays',compact('holiday'));
+         $this->middleware('permission:jours fériés-Voir-liste|jours fériés-Ajouter|jours fériés-Modifier|jours fériés-Supprimer', ['only' => ['index','store']]);
+         $this->middleware('permission:jours fériés-Ajouter', ['only' => ['create','store']]);
+         $this->middleware('permission:jours fériés-Modifier', ['only' => ['edit','update']]);
+         $this->middleware('permission:jours fériés-Supprimer', ['only' => ['destroy']]);
     }
-    // save record
-    public function saveRecord(Request $request)
+/* 'jours fériés-Voir-liste',
+                     'jours fériés-Ajouter',
+                     'jours fériés-Modifier',
+                     'jours fériés-Supprimer',*/
+    public function index()
     {
-        $request->validate([
-            'nameHoliday' => 'required|string|max:255',
-            'holidayDate' => 'required|string|max:255',
-        ]);
+        $holidays = Holiday::all();
 
-        DB::beginTransaction();
-        try {
-            $holiday = new Holiday;
-            $holiday->name_holiday = $request->nameHoliday;
-            $holiday->date_holiday  = $request->holidayDate;
-            $holiday->save();
-
-            DB::commit();
-            Toastr::success('Create new holiday successfully :)','Success');
-            return redirect()->back();
-
-        } catch(\Exception $e) {
-            DB::rollback();
-            Toastr::error('Add Holiday fail :)','Error');
-            return redirect()->back();
-        }
+        return view('holidays.index', compact('holidays'));
     }
-    // update
-    public function updateRecord( Request $request)
+
+    public function create()
     {
-        DB::beginTransaction();
-        try{
-            $id           = $request->id;
-            $holidayName  = $request->holidayName;
-            $holidayDate  = $request->holidayDate;
+        return view('holidays.create');
+    }
 
-            $update = [
+    public function store(Request $request)
+    {
+        $holiday = new Holiday;
 
-                'id'           => $id,
-                'name_holiday' => $holidayName,
-                'date_holiday' => $holidayDate,
-            ];
+        $holiday->name = $request->name;
+        $holiday->date = $request->date;
 
-            Holiday::where('id',$request->id)->update($update);
-            DB::commit();
-            Toastr::success('Holiday updated successfully :)','Success');
-            return redirect()->back();
+        $holiday->save();
 
-        }catch(\Exception $e){
-            DB::rollback();
-            Toastr::error('Holiday update fail :)','Error');
-            return redirect()->back();
-        }
+        return redirect()->route('holidays.index')->with('success', 'Holiday added successfully.');
+    }
+
+    public function edit($id)
+    {
+        $holiday = Holiday::findOrFail($id);
+
+        return view('holidays.edit', compact('holiday'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $holiday = Holiday::findOrFail($id);
+
+        $holiday->name = $request->name;
+        $holiday->date = $request->date;
+
+        $holiday->save();
+
+        return redirect()->route('holidays.index')->with('success', 'Holiday updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $holiday = Holiday::findOrFail($id);
+
+        $holiday->delete();
+
+        return redirect()->route('holidays.index')->with('success', 'Holiday deleted successfully.');
+    }
+
+    public function show($id)
+    {
+        $holiday = Holiday::findOrFail($id);
+
+        return view('holidays.show', compact('holiday'));
     }
 }

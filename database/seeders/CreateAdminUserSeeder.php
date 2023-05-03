@@ -26,6 +26,7 @@ class CreateAdminUserSeeder extends Seeder
             'cin' => '14405559',
             'num_emp' => '12',
             'ville' => 'MBZ',
+            'solde' =>'2,5',
             'codepostal' => '8010',
             'date_naiss' => '12/02/2000',
             'password' => bcrypt('123456')
