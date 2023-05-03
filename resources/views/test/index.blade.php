@@ -112,9 +112,11 @@ License: For each use you must have a valid license purchased only from above li
 
                 <!--begin::Brand-->
                 <div class="aside-logo flex-column-auto px-10 pt-9 pb-5" id="kt_aside_logo">
-                   <h1 class="menu-item here show menu-accordion">
-                    <img alt="Pic" width=150px src="{{asset('assets/media/avatars/logosocite.jpg')}}"></h1>
-                    <!--end::Logo-->
+
+            <img alt="Logo" src="{{asset('assets/media/avatars/logo-color.svg')}}"class="max-h-50px logo-color theme-light-show">
+            <img alt="Logo" src="{{asset('assets/media/avatars/logo-black.svg')}}"class="max-h-50px logo-default theme-dark-show">
+            <img alt="Logo"src="{{asset('assets/media/avatars/logosocite.jpg')}}" class="max-h-50px logo-minimize">
+
                 </div>
                 <!--end::Brand-->
 
@@ -148,7 +150,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
-                                    </span><span class="menu-title">Tableau de bord</span></span>
+                                    </span><span class="menu-title">Tableau de bord </span></span>
                                 <!--end:Menu link-->
                                 <!--begin:Menu sub-->
                                 <div class="menu-sub menu-sub-accordion">
@@ -222,25 +224,27 @@ License: For each use you must have a valid license purchased only from above li
     <div class="menu-sub menu-sub-accordion">
         <!--begin:Menu item-->
         <div class="menu-item">
-            <!--begin:Menu link--><a class="menu-link" href="{{ route('form/holidays/new') }}"><span
+            <!--begin:Menu link--><a class="menu-link" href="{{ route('holidays.index') }}"><span
                     class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                     class="menu-title">Jours Fériés</span></a>
             <!--end:Menu link-->
         </div>
         <!--end:Menu item-->
         <!--begin:Menu item-->
+
         <div class="menu-item">
             <!--begin:Menu link--><a class="menu-link"
-                href="{{ route('form/leaves/new') }}"><span class="menu-bullet"><span
+            href="{{ route('conges.index') }}"><span class="menu-bullet"><span
                         class="bullet bullet-dot"></span></span><span
                     class="menu-title">Conges(admin)</span></a>
             <!--end:Menu link-->
         </div>
+       
         <div class="menu-item">
             <!--begin:Menu link--><a class="menu-link"
-                href="{{route('form/leavesemployee/new')}}"><span class="menu-bullet"><span
+            href="{{ route('conges.user') }}"><span class="menu-bullet"><span
                         class="bullet bullet-dot"></span></span><span
-                    class="menu-title">Conges(employes)</span></a>
+                    class="menu-title">Mes Conges</span></a>
             <!--end:Menu link-->
         </div>
         <!--end:Menu item-->
@@ -333,7 +337,7 @@ License: For each use you must have a valid license purchased only from above li
 
             <div class="menu-item">
                 <!--begin:Menu link--><a class="menu-link"
-                    href="{{ route('form/leavesettings/page') }}"><span class="menu-bullet"><span
+                    href=""><span class="menu-bullet"><span
                             class="bullet bullet-dot"></span></span><span
                         class="menu-title">Parametre de conges </span></a>
                 <!--end:Menu link-->

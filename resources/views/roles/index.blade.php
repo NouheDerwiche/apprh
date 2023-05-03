@@ -12,33 +12,32 @@
         <!--begin::Search-->
         <div class="d-flex align-items-center position-relative my-1">
         <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-
+<table>
+    <tr>
         <div>
             <div class="menu-item menu-accordion">
                 <div class="">
 
-                    <form action="{{ route('roles.index') }}" method="GET" role="search" >
-
-                        <div class="input-group" >
-                            <span class="menu-bullet">
-                                <button class="btn btn-primary" type="submit" title="chercher par Roles ">
-                                    <span class="fas fa-search"></span>
-                                </button>
-                            </span>
-                            <input type="text" class="form-control mr-2" name="term" placeholder="chercher roles" id="term">
-                            <a href="{{ route('roles.index') }}" class=" mt-1">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button" title="Refresh page">
-                                        <span class="fas fa-sync-alt"></span>
-                                    </button>
-                                </span>
-                            </a>
-                        </div>
-                    </form>
+                   <div class="d-flex align-items-center">
+                <form action="{{ route('roles.index') }}" method="GET" class="mr-2">
+                    <a href="{{ route('roles.index') }}" class="mt-1">
+           <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" title="Refresh page">
+                    <span class="fas fa-sync-alt"></span>
+                </button>
+             </span>
+              </a>
+            <th> <th><input type="text" class="form-control" name="q" placeholder="Chercher rôles"></th></th><br/>
+             <th>
+                <button class="btn btn-primary ml-2" type="submit" title="Chercher par rôles">Rechercher</button></th>
+               </form>
+</div>
                 </div>
             </div>
         </div>
 
+    </tr>
+</table>
         </div>
         <!--end::Search-->
         </div>
@@ -51,9 +50,10 @@
 
 
         <!--begin::Add user-->
-        @can('role-create')
+
         <a class="btn btn-primary" href="{{ route('roles.create') }}">  Nouveau Rôle</a>
-        @endcan</div>
+
+    </div>
     </div>
 </div>
 
@@ -76,14 +76,13 @@
         <td>{{ $role->name }}</td>
         <td>
             <a class="btn btn-light btn-active-primary my-1 me-2" href="{{ route('roles.show',$role->id) }}">Afficher</a>
-            @can('role-edit')
+
                 <a class="btn btn-light btn-active-primary my-1 me-2" href="{{ route('roles.edit',$role->id) }}">Modifier</a>
-            @endcan
-            @can('role-delete')
+
             {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
                 {!! Form::submit('Supprimer', ['class' => 'btn btn-light btn-active-primary my-1 me-2', 'onclick' => 'return confirmDelete(event)']) !!}
             {!! Form::close() !!}
-            @endcan
+
 
             <style>.confirm-dialog {
                 position: fixed;
@@ -227,7 +226,7 @@
 </table>
 
 
-{!! $roles->render() !!}
+
                 </div>
 
 </div>

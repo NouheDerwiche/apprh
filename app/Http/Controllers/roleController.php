@@ -16,43 +16,65 @@ class roleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+
+
     function __construct()
     {
-         $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-         $this->middleware('permission:role-create', ['only' => ['create','store']]);
-         $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:role-Voir-liste|role-Ajouter|role-Modifier|role-supprimer', ['only' => ['index','store']]);
+         $this->middleware('permission:role-Ajouter', ['only' => ['create','store']]);
+         $this->middleware('permission:role-Modifier', ['only' => ['edit','update']]);
+         $this->middleware('permission:role-supprimer', ['only' => ['destroy']]);
     }
 
-    /**
+    /**'role-Voir-liste',
+           'role-Ajouter',
+           'role-Modifier',
+           'role-supprimer',
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $roles = Role::where([['name', '!=',NULL],[function($query)use ($request){
-            if(($term = $request->term)){
-                $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
-            }
-           }]])
+        // Récupérer le rôle de l'utilisateur authentifié
+        $userRole = auth()->user()->hasRole('Admin') ? 'Admin' : (auth()->user()->hasRole('rh') ? 'rh' : 'employe');
 
+        // Récupérer tous les éléments si l'utilisateur est un administrateur ou rh, sinon récupérer seulement la liste
+        if ($userRole === 'Admin') {
+            $query = Role::query();
+        } elseif ($userRole === 'rh') {
+            $query = Role::whereIn('name', ['employe', 'rh']);
+        } else {
+            $query = Role::where('name', 'employe');
+        }
 
-           ->orderBy('id','DESC')->paginate(5);
-        return view('roles.index',compact('roles'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        // Filter results based on search query
+        $searchQuery = $request->query('q');
+        if ($searchQuery) {
+            $query->where('name', 'LIKE', '%'.$searchQuery.'%');
+        }
+
+        $roles = $query->paginate(6);
+
+        return view('roles.index',compact('roles', 'searchQuery'))
+            ->with('i', ($request->input('page', 1) - 1) * 6);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $permission = Permission::get();
         return view('roles.create',compact('permission'));
     }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
 
     /**
      * Store a newly created resource in storage.
