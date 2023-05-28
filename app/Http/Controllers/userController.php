@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use Carbon\Carbon;
+use App\Mail\UserCreatedMail;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -106,11 +108,12 @@ if ($request->hasFile('avatar')) {
     $filename = time() . '_' . uniqid() . '.' . $avatar->getClientOriginalExtension();
 
     // Stocker l'image dans le dossier de destination
-    $avatar->storeAs('public/assets/media/avatars', $filename);
+    $avatar->storeAs('storage/app/public/assets/media/avatars', $filename);
 
     // Ajouter le nom du fichier à l'entrée utilisateur
     $input['avatar'] = $filename;
-}
+   }
+
 
         return redirect()->route('users.index')
                         ->with('success','Utilisateur créé avec succès');

@@ -7,7 +7,8 @@ use App\Http\Controllers\roleController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\CongeController;
 
-
+use App\Http\Controllers\ProjetController;
+use App\Http\Controllers\TacheController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\newpdwController;
 use App\Http\Controllers\HolidayController;
@@ -35,7 +36,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    Route::resource('projet', ProjetController::class);
+    Route::get('/tache', [TacheController::class, 'index'])->name('tache.index');
+    Route::get('/tache/create', [TacheController::class, 'create'])->name('tache.create');
+    Route::post('/tache', [TacheController::class, 'store'])->name('tache.store');
+    Route::get('/tache/{id}', [TacheController::class, 'show'])->name('tache.show');
+    Route::get('/tache/{id}/edit', [TacheController::class, 'edit'])->name('tache.edit');
+    Route::patch('/tache/{id}', [TacheController::class, 'update'])->name('tache.update');
+    Route::delete('/tache/{id}', [TacheController::class, 'destroy'])->name('tache.destroy');
 
 
 
@@ -45,6 +53,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', roleController::class);
     Route::resource('users', userController::class);
     Route::resource('myprofile',myprofileController ::class);
+    Route::resource("projets", ProjetController::class);
+
 
 });
 

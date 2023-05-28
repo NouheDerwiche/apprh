@@ -21,9 +21,9 @@
             <td><strong>Autorisation:</strong></td>
             <td>
                 @if(!empty($rolePermissions))
-                    @foreach($rolePermissions as $v)
-                        <label class="label label-success">{{ $v->name }},</label>
-                    @endforeach
+                @foreach($rolePermissions as $v)
+    <span class="fa fa-check-circle"></span> {{ $v->name }}<br>
+@endforeach
                 @endif
             </td>
         </tr>

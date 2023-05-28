@@ -42,6 +42,10 @@ class PermissionTableSeeder extends Seeder
                      'Ajouter-fiche de paie',
                      'Modifier-fiche de paie',
                      'Archiver-fiche de paie',
+                     'Ajouter projet',
+                     'Modifier projet',
+                     'Supprimer projet',
+                     'Voir_projet',
 
 
         ];

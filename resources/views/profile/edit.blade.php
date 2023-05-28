@@ -230,7 +230,7 @@
                             </div>
                         </div>
 
-                        <div class="form-text mb-5">Password must be at least 8 character and contain symbols</div>
+                        <div class="form-text mb-5">Le mot de passe doit comporter au moins 8 caractères et contenir des symboles</div>
 
                         <div class="d-flex">
                              <x-primary-button class="btn btn-primary me-2 px-6">{{ __('Modifier') }}</x-primary-button>
@@ -378,7 +378,7 @@
                     <!--begin::Col-->
                     <div class="col-lg-8 fv-row">
                         <x-text-input id="address" name="address" type="text" class="form-control form-control-lg form-control-solid" :value="old('address', $user->address)" required autofocus autocomplete="address" />
-                            <x-input-error class="mt-2" :messages="$errors->get('cin')" />                    </div>
+                            <x-input-error class="mt-2" :messages="$errors->get('address')" />                    </div>
                     <!--end::Col-->
                 </div>
                 <!--end::Input group-->

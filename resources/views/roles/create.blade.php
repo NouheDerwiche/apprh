@@ -34,15 +34,19 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="fs-5 fw-bold form-label mb-2">
-            <strong>Autorisation:</strong>
+            <strong>Autorisation :</strong>
             <br/>
-            @foreach($permission as $value)
-                <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                {{ $value->name }}</label>
-            <br/>
-            @endforeach
+            <div class="form-check">
+                @foreach($permission as $value)
+                    <input class="form-check-input" type="checkbox" name="permission[]" value="{{ $value->id }}" id="permission{{ $value->id }}">
+                    <label class="form-check-label text-dark" for="permission{{ $value->id }}">{{ $value->name }}</label>
+                    <br/>
+                @endforeach
+            </div>
         </div>
     </div>
+
+
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Enregistrer</button>
     </div>

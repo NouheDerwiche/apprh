@@ -239,7 +239,7 @@ License: For each use you must have a valid license purchased only from above li
                     class="menu-title">Conges(admin)</span></a>
             <!--end:Menu link-->
         </div>
-       
+
         <div class="menu-item">
             <!--begin:Menu link--><a class="menu-link"
             href="{{ route('conges.user') }}"><span class="menu-bullet"><span
@@ -258,7 +258,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 <div class="menu-item">
-    <!--begin:Menu link--><a class="menu-link" href="apps/calendar.html"><span
+    <!--begin:Menu link--><a class="menu-link" href=#><span
             class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
             <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -273,7 +273,7 @@ License: For each use you must have a valid license purchased only from above li
 </div>
 
 <div class="menu-item">
-    <!--begin:Menu link--><a class="menu-link" href="apps/calendar.html"><span
+    <!--begin:Menu link--><a class="menu-link" href="{{ route('projet.index') }}"><span
             class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
             <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -287,7 +287,7 @@ License: For each use you must have a valid license purchased only from above li
 </div>
 
 <div class="menu-item">
-    <!--begin:Menu link--><a class="menu-link" href="apps/calendar.html"><span
+    <!--begin:Menu link--><a class="menu-link" href="{{ route('tache.index') }}"><span
             class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
             <span class="svg-icon svg-icon-2"><svg width="24" height="24"
@@ -1003,6 +1003,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                 @yield('content')
+
 
 
 
