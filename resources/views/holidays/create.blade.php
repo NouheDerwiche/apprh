@@ -3,7 +3,7 @@
 @section('content')
     <h1>Ajouter un jour férié</h1>
 <div>
-    <a href="{{ route('holidays.index') }}" class="btn btn-primary">Retour à la liste des jours fériés</a>
+    <a href="{{ route('holidays.index') }}" class="btn btn-primary">Retour</a>
 </div>
     <form method="POST" action="{{ route('holidays.store') }}" class="form">
         @csrf
@@ -12,8 +12,12 @@
             <input type="text" id="name" name="name" width="280px" class="form-control">
         </div>
         <div class="form-group">
-            <label  width="280px" for="date">Date</label>
+            <label  width="280px" for="date">Date Debut</label>
             <input type="date" id="date" name="date" width="280px" class="form-control">
+        </div>
+        <div class="form-group">
+            <label  width="280px" for="date">Date Fin</label>
+            <input type="date" id="date2" name="date2" width="280px" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Ajouter</button>
     </form>

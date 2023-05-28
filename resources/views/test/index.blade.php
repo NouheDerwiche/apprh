@@ -111,14 +111,25 @@ License: For each use you must have a valid license purchased only from above li
                 data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle">
 
                 <!--begin::Brand-->
-                <div class="aside-logo flex-column-auto px-10 pt-9 pb-5" id="kt_aside_logo">
 
-            <img alt="Logo" src="{{asset('assets/media/avatars/logo-color.svg')}}"class="max-h-50px logo-color theme-light-show">
-            <img alt="Logo" src="{{asset('assets/media/avatars/logo-black.svg')}}"class="max-h-50px logo-default theme-dark-show">
-            <img alt="Logo"src="{{asset('assets/media/avatars/logosocite.jpg')}}" class="max-h-50px logo-minimize">
-
-                </div>
                 <!--end::Brand-->
+                <div class="aside-logo flex-column-auto px-10 pt-9 pb-5" id="kt_aside_logo">
+                    <!--begin::Logo-->
+                    <a href="../../index.html">
+                        <img alt="Logo" src="../../assets/media/logos/VV.png" class="max-h-50px logo-default theme-light-show" style="margin-left: -50px;">
+
+                        <img alt="Logo" src="../../assets/media/logos/VV.png" class="max-h-50px logo-default theme-dark-show" style="margin-left: -50px;">
+                    </a>
+                    <!--end::Logo-->
+                </div>
+
+<style>
+    .rotate-left {
+    transform: rotate(-15deg);
+}
+
+    </style>
+    <!--end::Brand-->
 
                 <!--begin::Aside menu-->
                 <div class="aside-menu flex-column-fluid px-4 px-lg-7">
@@ -195,7 +206,7 @@ License: For each use you must have a valid license purchased only from above li
 </svg>
 </span>
             <!--end::Svg Icon-->
-        </span><span class="menu-title"  >Utilisateur</span></a>
+        </span><span class="menu-title"  >Utilisateurs</span></a>
     <!--end:Menu link-->
 </div>
 
@@ -223,23 +234,18 @@ License: For each use you must have a valid license purchased only from above li
     <!--begin:Menu sub-->
     <div class="menu-sub menu-sub-accordion">
         <!--begin:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link--><a class="menu-link" href="{{ route('holidays.index') }}"><span
-                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                    class="menu-title">Jours Fériés</span></a>
-            <!--end:Menu link-->
-        </div>
+
         <!--end:Menu item-->
         <!--begin:Menu item-->
-
+        @if(auth()->user()->hasRole('Admin'))
         <div class="menu-item">
             <!--begin:Menu link--><a class="menu-link"
             href="{{ route('conges.index') }}"><span class="menu-bullet"><span
                         class="bullet bullet-dot"></span></span><span
-                    class="menu-title">Conges(admin)</span></a>
+                    class="menu-title">Conges </span></a>
             <!--end:Menu link-->
         </div>
-       
+     @endif
         <div class="menu-item">
             <!--begin:Menu link--><a class="menu-link"
             href="{{ route('conges.user') }}"><span class="menu-bullet"><span
@@ -256,21 +262,21 @@ License: For each use you must have a valid license purchased only from above li
 </div>
 <!--end:Menu item-->
 
-
 <div class="menu-item">
-    <!--begin:Menu link--><a class="menu-link" href="apps/calendar.html"><span
+    <!--begin:Menu link--><a class="menu-link" href="{{ route('holidays.index') }}" ><span
             class="menu-icon">
-            <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
-            <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path opacity="0.3" d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" fill="currentColor"></path>
-                <path d="M20 8L14 2V6C14 7.10457 14.8954 8 16 8H20Z" fill="currentColor"></path>
-                <path d="M10.3629 14.0084L8.92108 12.6429C8.57518 12.3153 8.03352 12.3153 7.68761 12.6429C7.31405 12.9967 7.31405 13.5915 7.68761 13.9453L10.2254 16.3488C10.6111 16.714 11.215 16.714 11.6007 16.3488L16.3124 11.8865C16.6859 11.5327 16.6859 10.9379 16.3124 10.5841C15.9665 10.2565 15.4248 10.2565 15.0789 10.5841L11.4631 14.0084C11.1546 14.3006 10.6715 14.3006 10.3629 14.0084Z" fill="currentColor"></path>
-                </svg>
-                </span>
+        <!--begin::Svg Icon | path: icons/duotune/electronics/elc002.svg-->
+<span class="svg-icon svg-icon-2"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 21C6 21.6 6.4 22 7 22H17C17.6 22 18 21.6 18 21V20H6V21Z" fill="currentColor"></path>
+    <path opacity="0.3" d="M17 2H7C6.4 2 6 2.4 6 3V20H18V3C18 2.4 17.6 2 17 2Z" fill="currentColor"></path>
+    <path d="M12 4C11.4 4 11 3.6 11 3V2H13V3C13 3.6 12.6 4 12 4Z" fill="currentColor"></path>
+    </svg>
+    </span>
             <!--end::Svg Icon-->
-        </span><span class="menu-title">Paies</span></a>
+        </span><span class="menu-title"  >Jours Fériés</span></a>
     <!--end:Menu link-->
 </div>
+
 
 <div class="menu-item">
     <!--begin:Menu link--><a class="menu-link" href="apps/calendar.html"><span
@@ -285,6 +291,38 @@ License: For each use you must have a valid license purchased only from above li
         </span><span class="menu-title">Projets</span></a>
     <!--end:Menu link-->
 </div>
+<div class="menu-item">
+    <!--begin:Menu link--><a class="menu-link" href="apps/calendar.html"><span
+            class="menu-icon">
+            <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
+            <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.3" d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" fill="currentColor"></path>
+                <path d="M20 8L14 2V6C14 7.10457 14.8954 8 16 8H20Z" fill="currentColor"></path>
+                <path d="M10.3629 14.0084L8.92108 12.6429C8.57518 12.3153 8.03352 12.3153 7.68761 12.6429C7.31405 12.9967 7.31405 13.5915 7.68761 13.9453L10.2254 16.3488C10.6111 16.714 11.215 16.714 11.6007 16.3488L16.3124 11.8865C16.6859 11.5327 16.6859 10.9379 16.3124 10.5841C15.9665 10.2565 15.4248 10.2565 15.0789 10.5841L11.4631 14.0084C11.1546 14.3006 10.6715 14.3006 10.3629 14.0084Z" fill="currentColor"></path>
+                </svg>
+                </span>
+            <!--end::Svg Icon-->
+        </span><span class="menu-title">Taches</span></a>
+    <!--end:Menu link-->
+</div>
+
+
+
+<div class="menu-item">
+    <!--begin:Menu link--><a class="menu-link" href="{{ route('fiche_de_paie.index') }}"><span
+            class="menu-icon">
+            <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
+            <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.3" d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" fill="currentColor"></path>
+                <path d="M20 8L14 2V6C14 7.10457 14.8954 8 16 8H20Z" fill="currentColor"></path>
+                <path d="M10.3629 14.0084L8.92108 12.6429C8.57518 12.3153 8.03352 12.3153 7.68761 12.6429C7.31405 12.9967 7.31405 13.5915 7.68761 13.9453L10.2254 16.3488C10.6111 16.714 11.215 16.714 11.6007 16.3488L16.3124 11.8865C16.6859 11.5327 16.6859 10.9379 16.3124 10.5841C15.9665 10.2565 15.4248 10.2565 15.0789 10.5841L11.4631 14.0084C11.1546 14.3006 10.6715 14.3006 10.3629 14.0084Z" fill="currentColor"></path>
+                </svg>
+                </span>
+            <!--end::Svg Icon-->
+        </span><span class="menu-title">Fiche de paie</span></a>
+    <!--end:Menu link-->
+</div>
+
 
 <div class="menu-item">
     <!--begin:Menu link--><a class="menu-link" href="apps/calendar.html"><span
@@ -308,7 +346,19 @@ License: For each use you must have a valid license purchased only from above li
     <!--end:Menu link-->
 </div>
 
-
+<div class="menu-item">
+    <!--begin:Menu link--><a class="menu-link" href="{{ route('roles.index') }}"><span
+            class="menu-icon">
+             <!--begin::Svg Icon | path: icons/duotune/abstract/abs042.svg-->
+<span class="svg-icon svg-icon-2"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18 21.6C16.6 20.4 9.1 20.3 6.3 21.2C5.7 21.4 5.1 21.2 4.7 20.8L2 18C4.2 15.8 10.8 15.1 15.8 15.8C16.2 18.3 17 20.5 18 21.6ZM18.8 2.8C18.4 2.4 17.8 2.20001 17.2 2.40001C14.4 3.30001 6.9 3.2 5.5 2C6.8 3.3 7.4 5.5 7.7 7.7C9 7.9 10.3 8 11.7 8C15.8 8 19.8 7.2 21.5 5.5L18.8 2.8Z" fill="currentColor"></path>
+    <path opacity="0.3" d="M21.2 17.3C21.4 17.9 21.2 18.5 20.8 18.9L18 21.6C15.8 19.4 15.1 12.8 15.8 7.8C18.3 7.4 20.4 6.70001 21.5 5.60001C20.4 7.00001 20.2 14.5 21.2 17.3ZM8 11.7C8 9 7.7 4.2 5.5 2L2.8 4.8C2.4 5.2 2.2 5.80001 2.4 6.40001C2.7 7.40001 3.00001 9.2 3.10001 11.7C3.10001 15.5 2.40001 17.6 2.10001 18C3.20001 16.9 5.3 16.2 7.8 15.8C8 14.2 8 12.7 8 11.7Z" fill="currentColor"></path>
+    </svg>
+    </span>
+            <!--end::Svg Icon-->
+        </span><span class="menu-title">Roles</span></a>
+    <!--end:Menu link-->
+</div>
 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
     <!--begin:Menu link--><span class="menu-link"><span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
@@ -326,14 +376,7 @@ License: For each use you must have a valid license purchased only from above li
         <!--begin:Menu item-->
         <div class="menu-sub menu-sub-accordion">
             <!--begin:Menu item-->
-            <div class="menu-item">
-                <!--begin:Menu link--><a class="menu-link"
-                    href="{{ route('roles.index') }}"><span
-                        class="menu-bullet"><span
-                            class="bullet bullet-dot"></span></span><span
-                        class="menu-title">Roles</span></a>
-                <!--end:Menu link-->
-            </div>
+
 
             <div class="menu-item">
                 <!--begin:Menu link--><a class="menu-link"
@@ -895,8 +938,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Username-->
                                                 <div class="d-flex flex-column">
                                                     <div class="fw-bold d-flex align-items-center fs-5">
-                                                        {{ Auth::user()->name }} <span
-                                                            class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">    <?php
+                                                        {{ Auth::user()->name }} <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2 text-primary">   <?php
                                                             // Inclure le code pour récupérer le nom de rôle de l'utilisateur
                                                             // (remplacer le code par le code que je vous ai donné)
                                                             $user = auth()->user();
@@ -1000,6 +1042,7 @@ License: For each use you must have a valid license purchased only from above li
                 <!--end::Header-->
 
 
+                <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
 
 
                 @yield('content')
@@ -1021,7 +1064,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-
+                </div>
 
             </div>
 
@@ -2038,249 +2081,7 @@ License: For each use you must have a valid license purchased only from above li
             </div>
             <!--end::Header-->
 
-            <!--begin::Body-->
-            <div class="card-body" id="kt_help_body">
-                <!--begin::Content-->
-                <div id="kt_help_scroll" class="hover-scroll-overlay-y" data-kt-scroll="true"
-                    data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_help_body"
-                    data-kt-scroll-dependencies="#kt_help_header" data-kt-scroll-offset="5px">
 
-                    <!--begin::Support-->
-                    <div class="rounded border border-dashed border-gray-300 p-6 p-lg-8 mb-10">
-                        <!--begin::Heading-->
-                        <h2 class="fw-bold mb-5">Support at <a href="https://devs.keenthemes.com"
-                                class="">devs.keenthemes.com</a></h2>
-                        <!--end::Heading-->
-
-                        <!--begin::Description-->
-                        <div class="fs-5 fw-semibold mb-5">
-                            <span class="text-gray-500">Join our developers community to find answer to your question
-                                and help others.</span>
-                            <a class="explore-link d-none" href="https://keenthemes.com/licensing">FAQs</a>
-                        </div>
-                        <!--end::Description-->
-
-                        <!--begin::Link-->
-                        <a href="https://devs.keenthemes.com" class="btn btn-lg explore-btn-primary w-100">Get
-                            Support</a>
-                        <!--end::Link-->
-                    </div>
-                    <!--end::Support-->
-
-                    <!--begin::Link-->
-                    <a href="https://preview.keenthemes.com/html/craft/docs"
-                        class="parent-hover d-flex align-items-center mb-7">
-                        <!--begin::Icon-->
-                        <div
-                            class="d-flex flex-center w-50px h-50px w-lg-75px h-lg-75px flex-shrink-0 rounded bg-light-warning">
-                            <!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
-                            <span class="svg-icon svg-icon-warning svg-icon-2x svg-icon-lg-3x"><svg width="24"
-                                    height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.3"
-                                        d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z"
-                                        fill="currentColor"></path>
-                                    <path
-                                        d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Icon-->
-
-                        <!--begin::Info-->
-                        <div class="d-flex flex-stack flex-grow-1 ms-4 ms-lg-6">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-column me-2 me-lg-5">
-                                <!--begin::Title-->
-                                <div class="text-dark parent-hover-primary fw-bold fs-6 fs-lg-4 mb-1">
-                                    Documentation </div>
-                                <!--end::Title-->
-
-                                <!--begin::Description-->
-                                <div class="text-muted fw-semibold fs-7 fs-lg-6">
-                                    From guides and how-tos, to live demos and code examples to get started right away.
-                                </div>
-                                <!--end::Description-->
-                            </div>
-                            <!--end::Wrapper-->
-
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-                            <span class="svg-icon svg-icon-gray-400 svg-icon-2"><svg width="24" height="24"
-                                    viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1"
-                                        transform="rotate(-180 18 13)" fill="currentColor"></rect>
-                                    <path
-                                        d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Info-->
-                    </a>
-                    <!--end::Link-->
-                    <!--begin::Link-->
-                    <a href="https://preview.keenthemes.com/html/craft/docs//base/utilities"
-                        class="parent-hover d-flex align-items-center mb-7">
-                        <!--begin::Icon-->
-                        <div
-                            class="d-flex flex-center w-50px h-50px w-lg-75px h-lg-75px flex-shrink-0 rounded bg-light-primary">
-                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-                            <span class="svg-icon svg-icon-primary svg-icon-2x svg-icon-lg-3x"><svg width="24"
-                                    height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
-                                        fill="currentColor"></path>
-                                    <path d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
-                                        fill="currentColor"></path>
-                                    <path opacity="0.3"
-                                        d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Icon-->
-
-                        <!--begin::Info-->
-                        <div class="d-flex flex-stack flex-grow-1 ms-4 ms-lg-6">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-column me-2 me-lg-5">
-                                <!--begin::Title-->
-                                <div class="text-dark parent-hover-primary fw-bold fs-6 fs-lg-4 mb-1">
-                                    Plugins & Components </div>
-                                <!--end::Title-->
-
-                                <!--begin::Description-->
-                                <div class="text-muted fw-semibold fs-7 fs-lg-6">
-                                    Check out our 300+ in-house components and customized 3rd-party plugins. </div>
-                                <!--end::Description-->
-                            </div>
-                            <!--end::Wrapper-->
-
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-                            <span class="svg-icon svg-icon-gray-400 svg-icon-2"><svg width="24" height="24"
-                                    viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1"
-                                        transform="rotate(-180 18 13)" fill="currentColor"></rect>
-                                    <path
-                                        d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Info-->
-                    </a>
-                    <!--end::Link-->
-                    <!--begin::Link-->
-                    <a href="layout-builder.html" class="parent-hover d-flex align-items-center mb-7">
-                        <!--begin::Icon-->
-                        <div
-                            class="d-flex flex-center w-50px h-50px w-lg-75px h-lg-75px flex-shrink-0 rounded bg-light-info">
-                            <!--begin::Svg Icon | path: icons/duotune/art/art006.svg-->
-                            <span class="svg-icon svg-icon-info svg-icon-2x svg-icon-lg-3x"><svg width="24" height="24"
-                                    viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.3"
-                                        d="M22 19V17C22 16.4 21.6 16 21 16H8V3C8 2.4 7.6 2 7 2H5C4.4 2 4 2.4 4 3V19C4 19.6 4.4 20 5 20H21C21.6 20 22 19.6 22 19Z"
-                                        fill="currentColor"></path>
-                                    <path
-                                        d="M20 5V21C20 21.6 19.6 22 19 22H17C16.4 22 16 21.6 16 21V8H8V4H19C19.6 4 20 4.4 20 5ZM3 8H4V4H3C2.4 4 2 4.4 2 5V7C2 7.6 2.4 8 3 8Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Icon-->
-
-                        <!--begin::Info-->
-                        <div class="d-flex flex-stack flex-grow-1 ms-4 ms-lg-6">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-column me-2 me-lg-5">
-                                <!--begin::Title-->
-                                <div class="text-dark parent-hover-primary fw-bold fs-6 fs-lg-4 mb-1">
-                                    Layout Builder </div>
-                                <!--end::Title-->
-
-                                <!--begin::Description-->
-                                <div class="text-muted fw-semibold fs-7 fs-lg-6">
-                                    Build your layout, preview it and export the HTML for server side integration.
-                                </div>
-                                <!--end::Description-->
-                            </div>
-                            <!--end::Wrapper-->
-
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-                            <span class="svg-icon svg-icon-gray-400 svg-icon-2"><svg width="24" height="24"
-                                    viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1"
-                                        transform="rotate(-180 18 13)" fill="currentColor"></rect>
-                                    <path
-                                        d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Info-->
-                    </a>
-                    <!--end::Link-->
-                    <!--begin::Link-->
-                    <a href="https://preview.keenthemes.com/html/craft/docs/getting-started/changelog"
-                        class="parent-hover d-flex align-items-center mb-7">
-                        <!--begin::Icon-->
-                        <div
-                            class="d-flex flex-center w-50px h-50px w-lg-75px h-lg-75px flex-shrink-0 rounded bg-light-danger">
-                            <!--begin::Svg Icon | path: icons/duotune/electronics/elc009.svg-->
-                            <span class="svg-icon svg-icon-danger svg-icon-2x svg-icon-lg-3x"><svg width="24"
-                                    height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M13 9V8C13 7.4 13.4 7 14 7H15C16.7 7 18 5.7 18 4V3C18 2.4 17.6 2 17 2C16.4 2 16 2.4 16 3V4C16 4.6 15.6 5 15 5H14C12.3 5 11 6.3 11 8V9H13Z"
-                                        fill="currentColor"></path>
-                                    <path opacity="0.3"
-                                        d="M21 22H3C2.4 22 2 21.6 2 21V10C2 9.4 2.4 9 3 9H21C21.6 9 22 9.4 22 10V21C22 21.6 21.6 22 21 22ZM5 12C4.4 12 4 12.4 4 13C4 13.6 4.4 14 5 14C5.6 14 6 13.6 6 13C6 12.4 5.6 12 5 12ZM8 12C7.4 12 7 12.4 7 13C7 13.6 7.4 14 8 14C8.6 14 9 13.6 9 13C9 12.4 8.6 12 8 12ZM11 12C10.4 12 10 12.4 10 13C10 13.6 10.4 14 11 14C11.6 14 12 13.6 12 13C12 12.4 11.6 12 11 12ZM14 12C13.4 12 13 12.4 13 13C13 13.6 13.4 14 14 14C14.6 14 15 13.6 15 13C15 12.4 14.6 12 14 12ZM9 15C8.4 15 8 15.4 8 16C8 16.6 8.4 17 9 17C9.6 17 10 16.6 10 16C10 15.4 9.6 15 9 15ZM12 15C11.4 15 11 15.4 11 16C11 16.6 11.4 17 12 17C12.6 17 13 16.6 13 16C13 15.4 12.6 15 12 15ZM15 15C14.4 15 14 15.4 14 16C14 16.6 14.4 17 15 17C15.6 17 16 16.6 16 16C16 15.4 15.6 15 15 15ZM19 18C18.4 18 18 18.4 18 19C18 19.6 18.4 20 19 20C19.6 20 20 19.6 20 19C20 18.4 19.6 18 19 18ZM7 19C7 18.4 6.6 18 6 18H5C4.4 18 4 18.4 4 19C4 19.6 4.4 20 5 20H6C6.6 20 7 19.6 7 19ZM7 16C7 15.4 6.6 15 6 15H5C4.4 15 4 15.4 4 16C4 16.6 4.4 17 5 17H6C6.6 17 7 16.6 7 16ZM17 14H19C19.6 14 20 13.6 20 13C20 12.4 19.6 12 19 12H17C16.4 12 16 12.4 16 13C16 13.6 16.4 14 17 14ZM18 17H19C19.6 17 20 16.6 20 16C20 15.4 19.6 15 19 15H18C17.4 15 17 15.4 17 16C17 16.6 17.4 17 18 17ZM17 19C17 18.4 16.6 18 16 18H9C8.4 18 8 18.4 8 19C8 19.6 8.4 20 9 20H16C16.6 20 17 19.6 17 19Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Icon-->
-
-                        <!--begin::Info-->
-                        <div class="d-flex flex-stack flex-grow-1 ms-4 ms-lg-6">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-column me-2 me-lg-5">
-                                <!--begin::Title-->
-                                <div class="text-dark parent-hover-primary fw-bold fs-6 fs-lg-4 mb-1">
-                                    What's New ? </div>
-                                <!--end::Title-->
-
-                                <!--begin::Description-->
-                                <div class="text-muted fw-semibold fs-7 fs-lg-6">
-                                    Latest features and improvements added with our users feedback in mind. </div>
-                                <!--end::Description-->
-                            </div>
-                            <!--end::Wrapper-->
-
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-                            <span class="svg-icon svg-icon-gray-400 svg-icon-2"><svg width="24" height="24"
-                                    viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1"
-                                        transform="rotate(-180 18 13)" fill="currentColor"></rect>
-                                    <path
-                                        d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Info-->
-                    </a>
-                    <!--end::Link-->
-                </div>
-                <!--end::Content-->
-            </div>
             <!--end::Body-->
         </div>
         <!--end::Card-->
@@ -2289,29 +2090,7 @@ License: For each use you must have a valid license purchased only from above li
     <!--end::Engage drawers-->
 
     <!--begin::Engage toolbar-->
-    <div
-        class="engage-toolbar d-flex position-fixed px-5 fw-bold zindex-2 top-50 end-0 transform-90 mt-5 mt-lg-20 gap-2">
 
-
-
-
-        <!--begin::Help drawer toggle-->
-        <button id="kt_help_toggle" class="engage-help-toggle btn engage-btn shadow-sm px-5 rounded-top-0"
-            title="Learn & Get Inspired" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-inverse"
-            data-bs-placement="left" data-bs-dismiss="click" data-bs-trigger="hover">
-            Help
-        </button>
-        <!--end::Help drawer toggle-->
-
-        <!--begin::Purchase link-->
-        <a href="https://themes.getbootstrap.com/product/craft-bootstrap-5-admin-dashboard-theme" target="_blank"
-            class="engage-purchase-link btn engage-btn px-5 shadow-sm rounded-top-0">
-            Buy now
-        </a>
-        <!--end::Purchase link-->
-
-
-    </div>
     <!--end::Engage toolbar-->
     <!--begin::Scrolltop-->
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">

@@ -14,6 +14,7 @@ class Holiday extends Model
     protected $fillable = [
         'name',
         'date',
+        'date2',
     ];
 
 
@@ -52,6 +53,6 @@ class Holiday extends Model
 
             return ABS($daysDiff - 12 );}
 
-           
+
 
 }

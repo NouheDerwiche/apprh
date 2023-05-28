@@ -11,8 +11,15 @@
                 {{-- Afficher tous les éléments --}}
 
                 <div class="card-body">
+                    @php
+                        $origin = new DateTime($conge->date_debut);
+                        $target = new DateTime($conge->date_fin);
+                        $interval = $origin->diff($target);
+                        $duree = $interval->format('%a');
+                    @endphp
                     <form method="POST" action="{{ route('conges.update', $conge) }}">
                         @csrf
+                        <input type="hidden" value="{{ $duree }}" name="conge_duree">
                         @method('PUT')
 
                         <div class="form-group row">
@@ -70,8 +77,8 @@
                                     <option value="conge maternite" @if (old('type_conge', $conge->type_conge) == 'conge maternite') selected @endif>{{ __('Congé maternité') }}</option>
                                     <option value="conge solde" @if (old('type_conge', $conge->type_conge) == 'conge solde') selected @endif>{{ __('Congé soldé') }}</option>
                                     <option value="conge non solde" @if (old('type_conge', $conge->type_conge) == 'conge non solde') selected @endif>{{ __('Congé non-soldé') }}</option>
-                                    </select>
-                                    @error('type_conge')
+                                </select>
+                                @error('type_conge')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -86,9 +93,9 @@
                                 <select id="status" name="status" class="form-control @error('status') is-invalid @enderror">
                                     <option value="en attente" @if (old('status', $conge->status) == 'en attente') selected @endif>{{ __('En attente') }}</option>
                                     @if(auth()->user()->hasRole('Admin'))
-                                    <option value="accepte" @if (old('status', $conge->status) == 'accepte') selected @endif>{{ __('Accepté') }}</option>
-                                    <option value="refuse" @if (old('status', $conge->status) == 'refuse') selected @endif>{{ __('Refusé') }}</option>
-@endif
+                                        <option value="accepte" @if (old('status', $conge->status) == 'accepte') selected @endif>{{ __('Accepté') }}</option>
+                                        <option value="refuse" @if (old('status', $conge->status) == 'refuse') selected @endif>{{ __('Refusé') }}</option>
+                                    @endif
                                 </select>
 
                                 @error('status')
@@ -102,7 +109,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" onchange="test()">
                                     {{ __('Modifier le congé') }}
                                 </button>
                             </div>

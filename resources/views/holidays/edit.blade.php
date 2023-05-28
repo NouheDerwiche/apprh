@@ -15,8 +15,12 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ $holiday->name }}">
             </div>
             <div class="form-group">
-                <label for="date">Date</label>
+                <label for="date">Date Debut</label>
                 <input type="date" class="form-control" id="date" name="date" value="{{ $holiday->date }}">
+            </div>
+            <div class="form-group">
+                <label for="date">Date Fin</label>
+                <input type="date" class="form-control" id="date2" name="date2" value="{{ $holiday->date2 }}">
             </div>
             <button type="submit" class="btn btn-primary">Modifier</button>
         </form>

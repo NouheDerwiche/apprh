@@ -23,7 +23,7 @@ class roleController extends Controller
 
     function __construct()
     {
-         $this->middleware('permission:role-Voir-liste|role-Ajouter|role-Modifier|role-supprimer', ['only' => ['index','store']]);
+         $this->middleware('permission:role-Voir-list|role-Ajouter|role-Modifier|role-supprimer', ['only' => ['index','store']]);
          $this->middleware('permission:role-Ajouter', ['only' => ['create','store']]);
          $this->middleware('permission:role-Modifier', ['only' => ['edit','update']]);
          $this->middleware('permission:role-supprimer', ['only' => ['destroy']]);
@@ -57,7 +57,7 @@ class roleController extends Controller
             $query->where('name', 'LIKE', '%'.$searchQuery.'%');
         }
 
-        $roles = $query->paginate(6);
+        $roles = $query->paginate(5);
 
         return view('roles.index',compact('roles', 'searchQuery'))
             ->with('i', ($request->input('page', 1) - 1) * 6);

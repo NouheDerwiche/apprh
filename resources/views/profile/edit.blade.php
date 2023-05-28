@@ -9,18 +9,18 @@
 		<!--begin::Info-->
         <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
 			<!--begin::Title-->
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+
             <h1 class="text-dark fw-bold my-1 fs-2">
-                Paramètres du compte                        </h1>
-			<!--end::Title-->
+               Votre Informations                      </h1>
+			<!--end::Title--></div>
 
             				<!--begin::Breadcrumb-->
                 <ul class="breadcrumb fw-semibold fs-base my-1">
-                                                                        <li class="breadcrumb-item text-muted">
 
-                                    Accueil                        </li>
 
                                                                         <li class="breadcrumb-item text-muted">
-                                    Mon profil                                                           </li>
+                                                                        </li>
 
 
                                     </ul>
@@ -29,13 +29,7 @@
 		<!--end::Info-->
 
 		<!--begin::Actions-->
-        <div class="d-flex align-items-center flex-nowrap text-nowrap py-1">
 
-                            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_project" id="kt_toolbar_primary_button">
-                    New Project                </a>
-                    </div>
-		<!--end::Actions-->
-    </div>
 </div>
 <!--end::Toolbar-->
 
@@ -55,7 +49,7 @@
                     <li class="menu-item px-3 pt-0 pb-1">
                         <a href="#kt_account_settings_overview" data-kt-scroll-toggle="true" class="menu-link px-3 nav-link active">
                             <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                            <span class="menu-title">Overview</span>
+                            <span class="menu-title">Profil</span>
                         </a>
                     </li>
                     <li class="menu-item px-3 pt-0 pb-1">
@@ -87,7 +81,7 @@
     <!--begin::Card header-->
     <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_overview">
         <div class="card-title">
-            <h3 class="fw-bold m-0">Overview</h3>
+            <h3 class="fw-bold m-0">Profil</h3>
         </div>
     </div>
     <!--end::Card header-->
@@ -108,7 +102,7 @@
                     <div class="d-flex flex-column">
                         <div class="fs-2 fw-bold mb-1">{{ Auth::user()->name }}</div>
                         <a href="#" class="text-gray-400 text-hover-primary fs-6 fw-semibold mb-5">{{ Auth::user()->email }}</a>
-                        <div class="badge badge-light-success text-success fw-bold fs-7 me-auto mb-3 px-4 py-3"><?php
+                        <div class="badge badge-light-success text-primary fw-bold fs-7 me-auto mb-3 px-4 py-3"><?php
                             // Inclure le code pour récupérer le nom de rôle de l'utilisateur
                             // (remplacer le code par le code que je vous ai donné)
                             $user = auth()->user();
@@ -159,17 +153,17 @@
                         @csrf
                         @method('patch')
 
-                        <div class="row mb-6">
-                            <div class="col-lg-6 mb-4 mb-lg-0">
+
                                 <div class="fv-row mb-0">
-                                    <label for="email" class="form-label fs-6 fw-bold mb-3">Nouvelle adresse e-mail</label>
-                                    <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+
+                                        <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}">
                                         <x-input-error class="mt-2" :messages="$errors->get('email')" />
                                 </div>
-                            </div>
-                        </div>
+                                <div class="separator separator-dashed my-6"></div>
+
+
                         <div class="d-flex">
-                                <x-primary-button class="btn btn-primary  me-2 px-6">{{ __('Modifier') }}</x-primary-button>
+                                <x-primary-button class="btn btn-light-primary">{{ __('Modifier') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -230,10 +224,10 @@
                             </div>
                         </div>
 
-                        <div class="form-text mb-5">Password must be at least 8 character and contain symbols</div>
+                        <div class="form-text mb-5">Le mot de passe doit comporter au moins 8 caractères et contenir des symboles.</div>
 
                         <div class="d-flex">
-                             <x-primary-button class="btn btn-primary me-2 px-6">{{ __('Modifier') }}</x-primary-button>
+                             <x-primary-button class="btn btn-light-primary">{{ __('Modifier') }}</x-primary-button>
                             @if (session('status') === 'password-updated')
                             <p
                                 x-data="{ show: true }"
@@ -287,7 +281,7 @@
             <div class="card-body border-top p-9">
                 <div class="form-group">
                     <label for="avatar">Avatar</label>
-                    <input type="file" name="avatar" class="form-control-file @error('avatar') is-invalid @enderror">
+                    <input type="file" name="avatar"     style="color: rgb(29, 115, 244)" class=" form-control-lg form-control-solid @error('avatar') is-invalid @enderror"/>
                     @error('avatar')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -308,7 +302,8 @@
                             <!--begin::Col-->
                             <div class="col-lg-6 fv-row">
                                 <x-text-input id="name" name="name" type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-                                    <x-input-error class="mt-2" :messages="$errors->get('name')" />                            </div>
+                                    <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                           </div>
                             <!--end::Col-->
 
                             <!--begin::Col-->
@@ -327,7 +322,7 @@
                 <!--begin::Input group-->
                 <div class="row mb-6">
                     <!--begin::Label-->
-                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Telephone 1</label>
+                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Telephone </label>
                     <!--end::Label-->
 
                     <!--begin::Col-->
@@ -338,19 +333,7 @@
                     <!--end::Col-->
                 </div>
                 <!--end::Input group-->
-                 <!--begin::Input group-->
-                 <div class="row mb-6">
-                    <!--begin::Label-->
-                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Telephone 2</label>
-                    <!--end::Label-->
 
-                    <!--begin::Col-->
-                    <div class="col-lg-8 fv-row">
-                        <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="Company name" value="Keenthemes">
-                    </div>
-                    <!--end::Col-->
-                </div>
-                <!--end::Input group-->
 
                 <!--begin::Input group-->
                 <div class="row mb-6">
@@ -369,6 +352,37 @@
                 </div>
                 <!--end::Input group-->
 
+                 <!--begin::Input group-->
+                 <div class="row mb-6">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Ville </label>
+                    <!--end::Label-->
+
+                    <!--begin::Col-->
+                    <div class="col-lg-8 fv-row">
+                        <x-text-input id="ville" name="ville" type="text" class="form-control form-control-lg form-control-solid" :value="old('ville', $user->ville)" required autofocus autocomplete="ville" />
+                            <x-input-error class="mt-2" :messages="$errors->get('ville')" />                    </div>
+                    <!--end::Col-->
+                </div>
+
+
+
+ <!--begin::Input group-->
+ <div class="row mb-6">
+    <!--begin::Label-->
+    <label class="col-lg-4 col-form-label fw-semibold fs-6">Code postal</label>
+    <!--end::Label-->
+
+    <!--begin::Col-->
+    <div class="col-lg-8 fv-row">
+        <x-text-input id="codepostal" name="codepostal" type="text" class="form-control form-control-lg form-control-solid" :value="old('codepostal', $user->codepostal)" required autofocus autocomplete="codepostal" />
+            <x-input-error class="mt-2" :messages="$errors->get('codepostal')" />                    </div>
+    <!--end::Col-->
+</div>
+
+
+
+
                 <!--begin::Input group-->
                 <div class="row mb-6">
                     <!--begin::Label-->
@@ -378,39 +392,16 @@
                     <!--begin::Col-->
                     <div class="col-lg-8 fv-row">
                         <x-text-input id="address" name="address" type="text" class="form-control form-control-lg form-control-solid" :value="old('address', $user->address)" required autofocus autocomplete="address" />
-                            <x-input-error class="mt-2" :messages="$errors->get('cin')" />                    </div>
+                            <x-input-error class="mt-2" :messages="$errors->get('address')" />                    </div>
                     <!--end::Col-->
                 </div>
                 <!--end::Input group-->
 
                 <!--begin::Input group-->
-                <div class="row mb-6">
-                    <!--begin::Label-->
-                    <label class="col-lg-4 col-form-label fw-semibold fs-6">
-                        <span class="required">Date Embauche</span>
 
-                        <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i>
-                    </label>
-                    <!--end::Label-->
-                    <!--begin::Col-->
-                    <div class="col-lg-8 fv-row">
-                        <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="Company name" value="Keenthemes">
-                    </div>
-                    <!--end::Col-->                </div>
                 <!--end::Input group-->
 
-                <!--begin::Input group-->
-                <div class="row mb-6">
-                    <!--begin::Label-->
-                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Contrat</label>
-                    <!--end::Label-->
 
-                    <!--begin::Col-->
-                    <div class="col-lg-8 fv-row">
-                        <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="Company name" value="Keenthemes">
-                    </div>
-                    <!--end::Col-->
-                </div>
                 <!--end::Input group-->
 
                 <!--begin::Input group-->
@@ -419,63 +410,54 @@
                     <label class="col-lg-4 col-form-label required fw-semibold fs-6">Salaire</label>
                     <!--end::Label-->
 
+
                     <!--begin::Col-->
                     <div class="col-lg-8 fv-row">
-                        <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="Company name" value="Keenthemes">
-                    </div>
+                        <div id="salaire" name="salaire" type="text" class="form-control form-control-lg form-control-solid" > {{ $user->salaire }}
+                                  </div>
                     <!--end::Col-->
                 </div>
-                <!--end::Input group-->
 
+                </div>
                 <!--begin::Input group-->
                 <div class="row mb-6">
                     <!--begin::Label-->
-                    <label class="col-lg-4 col-form-label  fw-semibold fs-6">Regime</label>
-                    <!--end::Label-->
-                    <!--begin::Col-->
-                    <div class="col-lg-8 fv-row">
-                        <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="Company name" value="Keenthemes">
-                    </div>
-                    <!--end::Col-->
-
-                </div>
-                <!--end::Input group-->
-
-                <!--begin::Input group-->
-                <div class="row mb-6">
-                    <!--begin::Label-->
-                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Solde Conge</label>
+                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Solde</label>
                     <!--end::Label-->
 
                     <!--begin::Col-->
-                    <div class="col-lg-8 fv-row">
-                        <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="Company name" value="Keenthemes">
-                    </div>
-                    <!--end::Col-->
+
+                        <div class="col-lg-8 fv-row">
+                            <div id="solde" name="solde" type="text" class="form-control form-control-lg form-control-solid" > {{ $user->solde }}
+                                      </div>
+                        <!--end::Col-->
                 </div>
-                <!--end::Input group-->
-                     <!--begin::Input group-->
-                     <div class="row mb-6">
+
+                </div>
+
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label required fw-semibold fs-6">Curriculum Vitae</label>
+                        <label class="col-lg-4 col-form-label required fw-semibold fs-6">Matricule</label>
                         <!--end::Label-->
+
 
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row">
-                            <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="Company name" value="Keenthemes">
-                        </div>
+                            <div id="num_emp" name="num_emp" type="text" class="form-control form-control-lg form-control-solid" > {{ $user->num_emp }}
+                                      </div>
                         <!--end::Col-->
                     </div>
-                    <!--end::Input group-->
 
-
+                    </div>
+                <!--end::Input group-->
             </div>
             <!--end::Card body-->
 
             <!--begin::Actions-->
             <div class="card-footer d-flex justify-content-end py-6 px-9">
 
-                <x-primary-button class="btn btn-primary">{{ __('Enregistrer modification') }}</x-primary-button>
+                <x-primary-button class="btn btn-light-primary">{{ __('Modifier ') }}</x-primary-button>
 
                 @if (session('status') === 'profile-updated')
                     <p

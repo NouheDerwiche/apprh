@@ -16,7 +16,7 @@ License: For each use you must have a valid license purchased only from above li
 <html lang="en">
     <!--begin::Head-->
     <head>
-        <title>Craft | Bootstrap 5 HTML Admin Dashboard Theme by Keenthemes</title>
+        <title>Platforme de gestion de ressource humaine</title>
         <meta charset="utf-8">
         <meta name="description" content="Craft admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets.">
         <meta name="keywords" content="Craft, bootstrap, bootstrap 5, admin themes, dark mode, free admin themes, bootstrap admin, bootstrap dashboard">
@@ -86,19 +86,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!--begin::Aside-->
     <div class="d-flex flex-column flex-lg-row-auto bg-primary w-xl-600px positon-xl-relative">
         <!--begin::Wrapper-->
-        <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
+        <div class="d-flex flex-column position-xl-fixed top-33 bottom-0 w-xl-600px ">
             <!--begin::Header-->
             <div class="d-flex flex-row-fluid flex-column text-center p-5 p-lg-10 pt-lg-20">
                 <!--begin::Logo-->
-                <a href="../../index.html" class="py-2 py-lg-20">
-                    <img alt="Logo" src="../../assets/media/logos/logo-ellipse.svg" class="h-60px h-lg-70px">
-                </a>
-                <!--end::Logo-->
+                <a  class="py-2 py-lg-20">
+                    <img alt="Logo" src="../../assets/media/logos/rr.png" class="max-h-50px logo-default theme-light-show" style="margin-left: -50px;">
+                    <img alt="Logo" src="../../assets/media/logos/rr.png" class="max-h-50px logo-default theme-dark-show" style="margin-left: -50px;">
+                    <h1 class="d-none d-lg-block fw-bold text-white fs-2qx pb-5 pb-md-10">
+                        RH.TUNISIE
+                       </h1>
 
-                <!--begin::Title-->
-                <h1 class="d-none d-lg-block fw-bold text-white fs-2qx pb-5 pb-md-10">
-                    Welcome to NACHED-IT
-                </h1>
+                       <div class="d-none d-lg-block d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{asset('../../assets/media/illustrations/sigma-1/17.png)')}}">
+                       </div>
+
+                </a>
                 <!--end::Title-->
 
                 <!--begin::Description-->
@@ -107,9 +109,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <!--end::Header-->
 
-            <!--begin::Illustration-->
-            <div class="d-none d-lg-block d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url(../../assets/media/illustrations/sigma-1/17.png)">
-            </div>
+
             <!--end::Illustration-->
         </div>
         <!--end::Wrapper-->
@@ -127,20 +127,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <form class="form w-100" novalidate="novalidate" method="POST" action="{{ route('password.email') }} ">
     @csrf
+
+
+
     <!--begin::Heading-->
     <div class="text-center mb-10">
         <!--begin::Title-->
         <h1 class="text-dark mb-3">
-            {{ ('Forgot Password ?') }}
+            {{ ('Mot de passe oublié ?') }}
         </h1>
         <!--end::Title-->
 
         <!--begin::Link-->
         <div class="text-gray-400 fw-semibold fs-4">
-            {{ __('Enter your email to reset your password.') }}
+            {{ __('Entrez votre e-mail pour réinitialiser votre mot de passe.') }}
         </div>
+
+
+        <strong id="message" style="display: none; color: blue;">Veuillez vérifier votre email</strong>
+
+
         <!--end::Link-->
     </div>
+
     <!--begin::Heading-->
     <div class="fv-row mb-10">
         <label for="email" class="form-label fw-bold text-gray-900 fs-6">{{ __('Email') }}</label>
@@ -149,14 +158,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="d-flex flex-wrap justify-content-center pb-lg-0">
     <div class="flex items-center justify-end mt-4">
-        <button  class="btn btn-lg btn-primary fw-bold me-4">
-
-            {{ __('submit') }}
-
-        </button>
+        <button class="btn btn-lg btn-primary fw-bold me-4" onclick="verifierEmail()"> {{ __('Envoyer') }} </button>
 
 
-        <a href={{ route('login') }} class="btn btn-lg btn-primary fw-bold me-4">Cancel</a>
+        <script>
+            function verifierEmail() {
+                var champEmail = document.getElementById("email");
+                var message = document.getElementById("message");
+
+                if (champEmail.value !== "") {
+                    message.style.display = "block";
+                }
+            }
+        </script>
+
+
+
+        <a href={{ route('login') }} class="btn btn-lg btn-primary fw-bold me-4">Annuler</a>
     </div>
     </div>
 </form>
@@ -165,19 +183,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
         <!--end::Content-->
 
-        <!--begin::Footer-->
-        <div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
-            <!--begin::Links-->
-            <div class="d-flex flex-center fw-semibold fs-6">
-                <a href="https://keenthemes.com" class="text-muted text-hover-primary px-2" target="_blank">About</a>
 
-                <a href="https://devs.keenthemes.com" class="text-muted text-hover-primary px-2" target="_blank">Support</a>
-
-                <a href="https://themes.getbootstrap.com/product/craft-bootstrap-5-admin-dashboard-theme" class="text-muted text-hover-primary px-2" target="_blank">Purchase</a>
-            </div>
-            <!--end::Links-->
-        </div>
-        <!--end::Footer-->
     </div>
     <!--end::Body-->
 </div>

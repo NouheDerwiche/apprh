@@ -97,14 +97,13 @@
         <div class="card-title d-flex flex-column">
             <!--begin::Info-->
             <div class="d-flex align-items-center">
-                <!--begin::Amount--> @foreach ($conges as $conge)
-                <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">@if(abs($conge->duree - 12) > 12)
-                    0
-                @else
-                    {{ abs($conge->duree - 12) }}
-                @endif</span>
+                <!--begin::Amount-->
+                @auth
+                <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">{{ Auth::user()->solde }}
+
+                  </span>
                 <!--end::Amount-->
-@endforeach
+@endauth
                 <!--begin::Badge-->
                 <span class="badge badge-light-danger fs-base">
                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
@@ -139,14 +138,8 @@
                 <!--begin::Info-->
                 <div class="d-flex align-items-center">
                     @auth
-                    <!--begin::Amount-->
-                    @foreach ($conges as $conge)
-                        @if(Auth::user()->id == $conge->user_id)
-                            <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">{{ Auth::user()->solde }}</span>
-                        @endif
-                    @endforeach
-                    <!--end::Amount-->
-                @endauth
+                        <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">Solde : {{ auth()->user()->solde }}</span>
+                    @endauth
 
                     <!--begin::Badge-->
                     <span class="badge badge-light-danger fs-base">
@@ -173,22 +166,32 @@
                 <!--end::Col--></th>
         </tr>
     </thead>
-</table>
+
+    </div><br/>
+
+</table >
 
         <table class="table">
+            <div class="card-toolbar">
+
+                <!--begin::Toolbar-->
+                <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+
+                <!--begin::Add user-->
+
+                <a class="btn btn-primary" href="{{ route('conges.create') }}">  Ajouter un congé</a>
+               </div>
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>N°</th>
                     <th>User ID</th>
                     <th>User name</th>
                     <th>Date début</th>
                     <th>Date fin</th>
                     <th>Type congé</th>
                     <th>status</th>
-                    <th>solde</th>
-                    <th>Durée</th>
-                    <th>Durée1</th>
-                    <th>Durée2</th>
+                    <th>NBjr</th>
+                    {{-- <th>solde</th> --}}
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -198,35 +201,38 @@
                         <td>{{ $conge->id }}</td>
                         <td>{{ $conge->user_id }}</td>
                         <td>{{ $conge->user->name }}</td>
-
                         <td>{{ $conge->date_debut }}</td>
                         <td>{{ $conge->date_fin }}</td>
                         <td>{{ $conge->type_conge }}</td>
-                        <td class="status-cell @if ($conge->status == 'en attente') bg-secondary
-                            @elseif ($conge->status == 'accepte') bg-success
-                            @elseif ($conge->status == 'refuse') bg-danger
-                            @endif">
-                   @if ($conge->status == 'en attente')
-                       <i class="fas fa-clock"></i> {{ __('En attente') }}
-                   @elseif ($conge->status == 'accepte')
-                       <i class="fas fa-check"></i> {{ __('Accepté') }}
-                   @elseif ($conge->status == 'refuse')
-                       <i class="fas fa-times"></i> {{ __('Refusé') }}
-                   @endif
-               </td><td></td>
+                        <td >
+                            @if ($conge->status == 'en attente')
+                                <span class="badge badge-light-warning fs-base">
+                                    <i class="fas fa-clock"></i> {{ __('En attente') }}
+                                </span>
+                            @elseif ($conge->status == 'accepte')
+                                <span class="badge badge-light-success fs-base">
+                                    <i class="fas fa-check"></i> {{ __('Accepté') }}
+                                </span>
+                            @elseif ($conge->status == 'refuse')
+                                <span class="badge badge-light-danger fs-base">
+                                    <i class="fas fa-times"></i> {{ __('Refusé') }}
+                                </span>
+                            @endif
+                        </td>
+
                         <td>{{ $conge->duree }} jours</td>
-                        <td>@if(abs($conge->duree - 12) > 12)
-                            0
-                        @else
-                            {{ abs($conge->duree - 12) }}
-                        @endif
-                            jours</td>
-                        <td>@if(abs($conge->duree - 1.5) > 1.5)
-                            0
-                        @else
-                            {{ abs($conge->duree - 1.5) }}
-                        @endif
-                            jours</td> <!-- display the duration property -->
+
+                        {{-- <td>
+                            @if(
+                                $conge->status == 'accepte'
+                                && ($conge->type_conge =='conge malade' || $conge->type_conge =='conge solde')
+                                && (auth()->user()->solde > $conge->duree || auth()->user()->solde == $conge->duree)
+                            )
+                                {{ auth()->user()->solde = ABS(auth()->user()->solde - $conge->duree) }}
+                            @else
+                                {{  auth()->user()->solde  }}
+                            @endif
+                        </td> --}}
                         <td>
                             <a href="{{ route('conges.edit', $conge->id) }}" class="btn btn-primary">Modifier</a>
                             <form action="{{ route('conges.destroy', $conge->id) }}" method="POST" style="display:inline">
@@ -234,14 +240,12 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Supprimer</button>
                                 <a href="{{ route('conges.show', ['conge' => $conge->id]) }}" class="btn btn-secondary">{{ __('show') }}</a>
-
                             </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        <a href="{{ route('conges.create') }}" class="btn btn-success">Ajouter un congé</a>
 
 
 

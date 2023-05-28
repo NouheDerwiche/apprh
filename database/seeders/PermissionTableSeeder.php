@@ -16,7 +16,7 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $permissions = [
-           'role-Voir-liste',
+           'role-Voir-list',
            'role-Ajouter',
            'role-Modifier',
            'role-supprimer',
@@ -42,7 +42,7 @@ class PermissionTableSeeder extends Seeder
                      'Ajouter-fiche de paie',
                      'Modifier-fiche de paie',
                      'Archiver-fiche de paie',
-
+                     
 
         ];
 
