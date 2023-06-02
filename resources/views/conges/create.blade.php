@@ -23,7 +23,7 @@
 
                             <div class="form-group row">
                                 <label for="user_id"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Utilisateur') }}</label>
+                                    class="col-md-4 col-form-label text-md-right"><strong>{{ __('Utilisateur') }}</strong></label>
 
                                 <div class="col-md-6 mb-3">
                                     <select id="user_id" class="form-control @error('user_id') is-invalid @enderror"
@@ -47,7 +47,7 @@
 
                             <div class="form-group row">
                                 <label for="date_debut"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Date de début') }}</label>
+                                    class="col-md-4 col-form-label text-md-right"><strong>{{ __('Date de début') }}</strong></label>
 
                                 <div class="col-md-6 mb-3">
                                     <input id="date_debut" onchange="test()" type="date"
@@ -64,7 +64,7 @@
 
                             <div class="form-group row">
                                 <label for="date_fin"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Date de fin') }}</label>
+                                    class="col-md-4 col-form-label text-md-right"><strong>{{ __('Date de fin') }}</strong></label>
 
                                 <div class="col-md-6 mb-3">
                                     <input id="date_fin" onchange="test()" type="date"
@@ -81,7 +81,7 @@
 
                             <div class="form-group row">
                                 <label for="type_conge"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Type de congé') }}</label>
+                                    class="col-md-4 col-form-label text-md-right"><strong>{{ __('Type de congé') }}</strong></label>
 
                                 <div class="col-md-6 mb-3">
                                     <select id="type_conge" onchange="test()"
@@ -103,7 +103,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="status"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('status') }}</label>
+                                    class="col-md-4 col-form-label text-md-right"><strong>{{ __('status') }}</strong></label>
                                 <div class="col-md-6 mb-3">
 
                                     <select class="form-control" id="status" name="status">
