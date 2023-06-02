@@ -1,43 +1,109 @@
 @extends('test.index')
 
 @section('content')
-<div class="container">
-    <div class="card">
-        <div class="card-header">{{ __('Détails du congé') }}</div>
 
-        <div class="card-body">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td>{{ __('Utilisateur') }}</td>
-                        <td>{{ $conge->user->name }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ __('Date de début') }}</td>
-                        <td>{{ $conge->date_debut }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ __('Date de fin') }}</td>
-                        <td>{{ $conge->date_fin }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ __('Type de congé') }}</td>
-                        <td>{{ $conge->type_conge }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ __('Statut') }}</td>
-                        <td>{{ $conge->status }}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!--begin::Post-->
+    <div class="container-xxl">
+        <div class="fv-row mb-10">
+            <div class="col-lg-12 margin-tb">
 
-            <div class="d-flex justify-content-between">
-                <a href="{{ route('conges.user') }}" class="btn btn-secondary">{{ __('Retour à la liste des congés') }}</a>
-                @if(auth()->user()->hasRole('admin'))
-                <a href="{{ route('conges.edit', $conge->id) }}" class="btn btn-primary">{{ __('Modifier le congé') }}</a>
-                @endif
+                <div class="pull-right">
+                    <a class="btn btn-light-primary" href="{{ route('conges.index') }}">Annuler</a>
+                </div>
             </div>
         </div>
+
+        <div class="post fs-6 d-flex flex-column-fluid" id="kt_post">
+            <!--begin::Container-->
+            <div class="container-xxl">
+                <!--begin::Card-->
+                <div class="card card-flush">
+                    <!--begin::Card header-->
+                    <div class="card-header mt-6">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <!--begin::Search-->
+                            <div class="fv-row mb-10">
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    <h1>Informations</h1>
+                                </div>
+                                <style>
+                                    .form-group strong {
+                                        display: inline-block;
+                                        width: 150px;
+                                        font-weight: bold;
+                                        margin-right: 10px;
+                                    }
+                                    .form-group label {
+                                        background-color: #51c76e;
+                                        display: inline-block;
+                                        margin-right: 5px;
+                                        margin-bottom: 5px;
+                                    }
+                                    .form-group .badge {
+                                        margin-right: 5px;
+                                        font-size: 0.8em;
+                                    }
+                                    .col-xs-12 {
+                                        margin-bottom: 20px;
+                                    }
+                                    .mb-10 {
+                                        margin-bottom: 10px;
+                                    }
+                                    .form-group {
+                                        margin-bottom: 10px;
+                                    }
+                                    .badge-success {
+                                        background-color: #28a745;
+                                    }
+                                    /* Ajouter d'autres styles CSS ici si nécessaire */
+                                </style>
+                                <table class="table table-bordered justify-content-center align-items-center" style="width: 900px; height: 300px; margin: 4%">
+                                    <tbody>
+
+                                        <tr>
+                                            <th>Matricule:</th>
+                                            <td>{{ $conge->user->num_emp }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Nom:</th>
+                                            <td>{{ $conge->user->name }} {{ $conge->user->prenom }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Cin:</th>
+                                            <td>{{ $conge->user->cin }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Date Debut:</th>
+                                            <td>{{ $conge->date_debut  }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Date de fin') }}</th>
+                                            <td>{{ $conge->date_fin }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Date de fin') }}</th>
+                                            <td>{{ $conge->date_fin }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Nombre des jours') }}</th>
+                                            <td>{{ $conge->type_conge }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Statut') }}</th>
+                                            <td>{{ $conge->status }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Container-->
+        </div>
     </div>
-</div>
 @endsection

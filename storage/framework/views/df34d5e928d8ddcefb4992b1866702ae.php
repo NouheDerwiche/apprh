@@ -45,20 +45,22 @@
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar">
                         <!--begin::Button-->
-                        <a href="<?php echo e(route('holidays.create')); ?>" class="btn btn-light-primary">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen035.svg-->
-                            <span class="svg-icon svg-icon-3"><svg width="24" height="24" viewbox="0 0 24 24"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect opacity="0.3" x="2" y="2" width="20" height="20"
-                                        rx="5" fill="currentColor"></rect>
-                                    <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
-                                        transform="rotate(-90 10.8891 17.8033)" fill="currentColor"></rect>
-                                    <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
-                                        fill="currentColor"></rect>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon--> Ajouter
-                        </a>
+                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jours fériés-Ajouter')): ?>
+                            <a href="<?php echo e(route('holidays.create')); ?>" class="btn btn-light-primary">
+                                <!--begin::Svg Icon | path: icons/duotune/general/gen035.svg-->
+                                <span class="svg-icon svg-icon-3"><svg width="24" height="24" viewbox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect opacity="0.3" x="2" y="2" width="20" height="20"
+                                            rx="5" fill="currentColor"></rect>
+                                        <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
+                                            transform="rotate(-90 10.8891 17.8033)" fill="currentColor"></rect>
+                                        <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
+                                            fill="currentColor"></rect>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon--> Ajouter
+                            </a>
+                        <?php endif; ?>
                         <!--end::Button-->
                     </div>
                     <!--end::Card toolbar-->
@@ -110,15 +112,15 @@
                                     <!--begin::Action--->
                                     <td>
 
-
+                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jours fériés-Ajouter')): ?>
                                         <a class="btn btn-light btn-active-primary my-1 me-2"
                                             href="<?php echo e(route('holidays.edit', $holiday->id)); ?>">Modifier</a>
-
+<?php endif; ?>
 
                                         <a class="btn btn-light btn-active-primary my-1 me-2"
                                             href="<?php echo e(route('holidays.show', $holiday->id)); ?>">Afficher</a>
 
-
+                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jours fériés-Ajouter')): ?>
                                         <?php echo Form::open([
                                             'method' => 'DELETE',
                                             'route' => ['holidays.destroy', $holiday->id],
@@ -132,7 +134,7 @@
 
                                         <?php echo Form::close(); ?>
 
-
+<?php endif; ?>
 
                                         <style>
                                             .confirm-dialog {
