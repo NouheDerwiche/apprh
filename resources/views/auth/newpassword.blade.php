@@ -5,7 +5,7 @@
 <html lang="en">
     <!--begin::Head-->
     <head>
-        <title>Craft | Bootstrap 5 HTML Admin Dashboard Theme by Keenthemes</title>
+        <title>Platforme de gestion de ressource humaine</title>
         <meta charset="utf-8">
         <meta name="description" content="Craft admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets.">
         <meta name="keywords" content="Craft, bootstrap, bootstrap 5, admin themes, dark mode, free admin themes, bootstrap admin, bootstrap dashboard">
@@ -75,28 +75,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!--begin::Aside-->
     <div class="d-flex flex-column flex-lg-row-auto bg-primary w-xl-600px positon-xl-relative">
         <!--begin::Wrapper-->
-        <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
+        <div class="d-flex flex-column position-xl-fixed top-33 bottom-0 w-xl-600px ">
             <!--begin::Header-->
             <div class="d-flex flex-row-fluid flex-column text-center p-5 p-lg-10 pt-lg-20">
                 <!--begin::Logo-->
-                <a href="../../index.html" class="py-2 py-lg-20">
-                    <img alt="Logo" src="{{asset('../../assets/media/logos/logo-ellipse.svg')}}" class="h-60px h-lg-70px">
+                <a  class="py-2 py-lg-20">
+                    <img alt="Logo" src="../../assets/media/logos/rr.png" class="max-h-50px logo-default theme-light-show" style="margin-left: -50px;">
+                    <img alt="Logo" src="../../assets/media/logos/rr.png" class="max-h-50px logo-default theme-dark-show" style="margin-left: -50px;">
+                    <h1 class="d-none d-lg-block fw-bold text-white fs-2qx pb-5 pb-md-10">
+                        RH.TUNISIE
+                       </h1>
+
+                       <div class="d-none d-lg-block d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{asset('../../assets/media/illustrations/sigma-1/17.png)')}}">
+                       </div>
+
                 </a>
-                <!--end::Logo-->
-
-                <!--begin::Title-->
-                <h1 class="d-none d-lg-block fw-bold text-white fs-2qx pb-5 pb-md-10">
-                    Welcome To NACHED-IT
-                </h1>
-                <!--end::Title-->
-
 
             </div>
             <!--end::Header-->
 
             <!--begin::Illustration-->
-            <div class="d-none d-lg-block d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{asset('../../assets/media/illustrations/sigma-1/17.png)')}}">
-            </div>
+
             <!--end::Illustration-->
         </div>
         <!--end::Wrapper-->
@@ -125,16 +124,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="text-center mb-10">
 <!--begin::Title-->
 <h1 class="text-dark mb-3">
-    Setup New Password
+    Configurer un nouveau mot de passe
 </h1>
 <!--end::Title-->
 
 <!--begin::Link-->
 <div class="text-gray-400 fw-semibold fs-4">
-    Already have reset your password ?
+    Vous avez déjà réinitialisé votre mot de passe ?
 
     <a href="basic.html" class="link-primary fw-bold">
-        Sign in here
+        Se connecter
     </a>
 </div>
 <!--end::Link-->
@@ -147,7 +146,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="mb-1">
     <!--begin::Label-->
     <label class="form-label fw-bold text-dark fs-6">
-        Password
+     Mot de passe
     </label>
     <!--end::Label-->
 
@@ -176,7 +175,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!--begin::Hint-->
 <div class="text-muted">
-    Use 8 or more characters with a mix of letters, numbers & symbols.
+    Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles.
 </div>
 <!--end::Hint-->
 </div>
@@ -184,7 +183,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!--begin::Input group--->
 <div class="fv-row mb-10">
-<label class="form-label fw-bold text-dark fs-6">Confirm Password</label>
+<label class="form-label fw-bold text-dark fs-6">Confirmez le mot de passe</label>
 
 <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm-password" autocomplete="off">
 </div>

@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
-use App\Models\tache;
-use App\Models\Projet;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
+use App\Models\Projet;
+use App\Models\tache;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TacheController extends Controller
 {
@@ -21,10 +20,8 @@ class TacheController extends Controller
 
         $projets = Projet::all();
 
-
-        return view('calendar', compact('taches', 'projets'));
+        return view('tache.index', compact('taches', 'projets'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -63,7 +60,6 @@ class TacheController extends Controller
 
         $tache->save();
 
-
         return redirect()->route('tache.index')
             ->with('success', 'Tâche créée avec succès.');
     }
@@ -95,8 +91,11 @@ class TacheController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $tache = Tache::find($id);
+        $tache->delete();
+
+        return redirect()->route('tache.index')->with('success', 'Tâche supprimée avec succès.');
     }
 }

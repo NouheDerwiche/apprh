@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Holiday;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class HolidayController extends Controller
 {
@@ -21,12 +23,22 @@ class HolidayController extends Controller
                      'jours fériés-Ajouter',
                      'jours fériés-Modifier',
                      'jours fériés-Supprimer',*/
-    public function index()
-    {
-        $holidays = Holiday::all();
+                     public function index(Request $request)
+                     {
+                         $search = $request->input('search');
 
-        return view('holidays.index', compact('holidays'));
-    }
+                         $query = DB::table('holidays');
+
+                         if (!empty($search)) {
+                             $query->where('name', 'LIKE', "%$search%")
+                                 ->orWhere('date', 'LIKE', "%$search%")
+                                 ->orWhere('date2', 'LIKE', "%$search%");
+                         }
+
+                         $holidays = $query->get();
+
+                         return view('holidays.index', compact('holidays'));
+                     }
 
     public function create()
     {
@@ -39,10 +51,10 @@ class HolidayController extends Controller
 
         $holiday->name = $request->name;
         $holiday->date = $request->date;
-
+        $holiday->date2 = $request->date2;
         $holiday->save();
 
-        return redirect()->route('holidays.index')->with('success', 'Holiday added successfully.');
+        return redirect()->route('holidays.index')->with('success', ' le jour férié  a été ajouté avec succès.');
     }
 
     public function edit($id)
@@ -58,10 +70,10 @@ class HolidayController extends Controller
 
         $holiday->name = $request->name;
         $holiday->date = $request->date;
-
+        $holiday->date2 = $request->date2;
         $holiday->save();
 
-        return redirect()->route('holidays.index')->with('success', 'Holiday updated successfully.');
+        return redirect()->route('holidays.index')->with('success', 'le jour férié a été modifié  avec succès.');
     }
 
     public function destroy($id)
@@ -70,7 +82,7 @@ class HolidayController extends Controller
 
         $holiday->delete();
 
-        return redirect()->route('holidays.index')->with('success', 'Holiday deleted successfully.');
+        return redirect()->route('holidays.index')->with('success', 'le jour férié été supprimé  avec succès.');
     }
 
     public function show($id)

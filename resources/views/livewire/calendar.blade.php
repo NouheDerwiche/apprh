@@ -25,7 +25,7 @@
               right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
             },
             locale: 'fr',
-            hiddenDays: [0],
+            hiddenDays: [0],// nhar ahed mfes5ino
 
             editable: true,
 
@@ -33,21 +33,56 @@
             editable: true,
             selectable: true,
             eventClick: function (info) {
-            var title = info.event.title;
-            var nom = info.event.extendedProps.nom;
-            var projet = info.event.extendedProps.projet;
-            var description = info.event.extendedProps.description;
-            var localisation = info.event.extendedProps.localisation;
-            var nbheures = info.event.extendedProps.nbh;
+    var title = info.event.title;
+    var nom = info.event.extendedProps.nom;
+    var projet = info.event.extendedProps.projet;
+    var description = info.event.extendedProps.description;
+    var localisation = info.event.extendedProps.localisation;
+    var nbheures = info.event.extendedProps.nbh;
+    var eventId = info.event.id;
 
-            var start = info.event.extendedProps.debut;
-            var end = info.event.extendedProps.fin;
-// 'Nom Employe : ' + nom +
-//            var nom = info.event.extendedProps.nom;
+    Swal.fire({
+        title: 'Détails de l\'événement',
+        html: `<div table="table table-bordered justify-content-center align-items-center">
+            <tbody>
+                <tr><th>
+                    <tr><th> <p><strong>Titre :</strong> </th> <td>${title}</td></tr>
+                    <tr><th> <p><strong>Nom Employé :</strong> ${nom}</td></tr>
+                        <tr><th><p><strong>Nom Projet :</strong>${projet}</td></tr>
+                            <tr><th> <p><strong>Description :</strong> ${description}</td></tr>
+                                <tr><th><p><strong>Localisation :</strong>${localisation}</td></tr>
+                                    <tr><th> <p><strong>Nombre d'heures :</strong> ${nbheures}</td></tr>
 
-            // Afficher les données dans un popup ou une boîte de dialogue
-            alert('Nom Employe : ' + nom +'\nTitre : ' + title + '\nNom projet : ' + projet + '\nDescription : ' + description + '\n Localisation : ' +localisation + '\n Nombre d heures : ' + nbheures);
+
+            </tbody>
+            </div>
+        `,
+        showCancelButton: true,
+        cancelButtonText: 'Modifier',
+        confirmButtonText: 'Supprimer',
+        showLoaderOnConfirm: true,
+        preConfirm: (choice) => {
+            if (choice === 'cancel') {
+                // Action de modification
+                // Rediriger vers la page de modification avec l'identifiant de l'événement
+                window.location.href = '/events/' + eventId + '/edit';
+            } else if (choice === 'confirm') {
+                // Action de suppression
+                // Envoyer une requête AJAX pour supprimer l'événement
+                // Exemple avec axios
+                axios.delete('/events/' + eventId)
+                    .then(response => {
+                        Swal.fire('Suppression', 'L\'événement a été supprimé avec succès.', 'success');
+                        // Recharger la page ou effectuer une autre action après la suppression
+                        location.reload();
+                    })
+                    .catch(error => {
+                        Swal.fire('Erreur', 'Une erreur est survenue lors de la suppression de l\'événement.', 'error');
+                    });
+            }
         }
+    });
+}
 
           });
 

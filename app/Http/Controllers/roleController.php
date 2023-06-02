@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use DB;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class roleController extends Controller
 {
@@ -17,22 +16,18 @@ class roleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-
-
-
-    function __construct()
+    public function __construct()
     {
-         $this->middleware('permission:role-Voir-liste|role-Ajouter|role-Modifier|role-supprimer', ['only' => ['index','store']]);
-         $this->middleware('permission:role-Ajouter', ['only' => ['create','store']]);
-         $this->middleware('permission:role-Modifier', ['only' => ['edit','update']]);
-         $this->middleware('permission:role-supprimer', ['only' => ['destroy']]);
+        $this->middleware('permission:role-Voir-list|role-Ajouter|role-Modifier|role-supprimer', ['only' => ['index', 'store']]);
+        $this->middleware('permission:role-Ajouter', ['only' => ['create', 'store']]);
+        $this->middleware('permission:role-Modifier', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:role-supprimer', ['only' => ['destroy']]);
     }
 
     /**'role-Voir-liste',
-           'role-Ajouter',
-           'role-Modifier',
-           'role-supprimer',
+    'role-Ajouter',
+    'role-Modifier',
+    'role-supprimer',
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -54,27 +49,25 @@ class roleController extends Controller
         // Filter results based on search query
         $searchQuery = $request->query('q');
         if ($searchQuery) {
-            $query->where('name', 'LIKE', '%'.$searchQuery.'%');
+            $query->where('name', 'LIKE', '%' . $searchQuery . '%');
         }
 
-        $roles = $query->paginate(6);
+        $roles = $query->paginate(5);
 
-        return view('roles.index',compact('roles', 'searchQuery'))
+        return view('roles.index', compact('roles', 'searchQuery'))
             ->with('i', ($request->input('page', 1) - 1) * 6);
     }
-
 
     public function create()
     {
         $permission = Permission::get();
-        return view('roles.create',compact('permission'));
+        return view('roles.create', compact('permission'));
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-
 
     /**
      * Store a newly created resource in storage.
@@ -93,7 +86,7 @@ class roleController extends Controller
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
-                        ->with('success','Rôle créé avec succès');
+            ->with('success', 'Rôle créé avec succès');
     }
     /**
      * Display the specified resource.
@@ -104,11 +97,11 @@ class roleController extends Controller
     public function show($id)
     {
         $role = Role::find($id);
-        $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
-            ->where("role_has_permissions.role_id",$id)
+        $rolePermissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
+            ->where("role_has_permissions.role_id", $id)
             ->get();
 
-        return view('roles.show',compact('role','rolePermissions'));
+        return view('roles.show', compact('role', 'rolePermissions'));
     }
 
     /**
@@ -121,11 +114,11 @@ class roleController extends Controller
     {
         $role = Role::find($id);
         $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
+            ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
-        return view('roles.edit',compact('role','permission','rolePermissions'));
+        return view('roles.edit', compact('role', 'permission', 'rolePermissions'));
     }
 
     /**
@@ -149,7 +142,7 @@ class roleController extends Controller
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
-                        ->with('success','Rôle mis à jour avec succès');
+            ->with('success', 'Rôle mis à jour avec succès');
     }
     /**
      * Remove the specified resource from storage.
@@ -159,8 +152,8 @@ class roleController extends Controller
      */
     public function destroy($id)
     {
-        DB::table("roles")->where('id',$id)->delete();
+        DB::table("roles")->where('id', $id)->delete();
         return redirect()->route('roles.index')
-                        ->with('success','Rôle supprimé avec succès');
+            ->with('success', 'Rôle supprimé avec succès');
     }
 }

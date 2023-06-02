@@ -15,7 +15,7 @@ License: For each use you must have a valid license purchased only from above li
 <html lang="en">
     <!--begin::Head-->
     <head>
-        <title>Craft | Bootstrap 5 HTML Admin Dashboard Theme by Keenthemes</title>
+        <title>Platforme de gestion de ressource humaine </title>
         <meta charset="utf-8">
         <meta name="description" content="Craft admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets.">
         <meta name="keywords" content="Craft, bootstrap, bootstrap 5, admin themes, dark mode, free admin themes, bootstrap admin, bootstrap dashboard">
@@ -33,10 +33,12 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
+
                     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-                            <link href="../../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css">
-                            <link href="../../assets/css/style.bundle.css" rel="stylesheet" type="text/css">
-                        <!--end::Global Stylesheets Bundle-->
+                    <link href="{{asset('../../assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css">
+                    <link href="{{asset('../../assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css">
+                <!--end::Global Stylesheets Bundle-->
+
 
                     <!--Begin::Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -85,19 +87,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!--begin::Aside-->
     <div class="d-flex flex-column flex-lg-row-auto bg-primary w-xl-600px positon-xl-relative">
         <!--begin::Wrapper-->
-        <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
+        <div class="d-flex flex-column position-xl-fixed top-33 bottom-0 w-xl-600px ">
             <!--begin::Header-->
             <div class="d-flex flex-row-fluid flex-column text-center p-5 p-lg-10 pt-lg-20">
-                <!--begin::Logo-->
-                <a href="../../index.html" class="py-2 py-lg-20">
-                    <img alt="Logo" src="../../assets/media/logos/logo-ellipse.svg" class="h-60px h-lg-70px">
-                </a>
-                <!--end::Logo-->
+                <a  class="py-2 py-lg-20">
+                    <img alt="Logo" src="../../assets/media/logos/rr.png" class="max-h-50px logo-default theme-light-show" style="margin-left: -50px;">
+                    <img alt="Logo" src="../../assets/media/logos/rr.png" class="max-h-50px logo-default theme-dark-show" style="margin-left: -50px;">
+                    <h1 class="d-none d-lg-block fw-bold text-white fs-2qx pb-5 pb-md-10">
+                        RH.TUNISIE
+                       </h1>
 
-                <!--begin::Title-->
-                <h1 class="d-none d-lg-block fw-bold text-white fs-2qx pb-5 pb-md-10">
-                    Welcome to NACHD-IT
-                </h1>
+                       <div class="d-none d-lg-block d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{asset('../../assets/media/illustrations/sigma-1/17.png)')}}">
+                       </div>
+
+                </a>
                 <!--end::Title-->
 
 
@@ -105,9 +108,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <!--end::Header-->
 
-            <!--begin::Illustration-->
-            <div class="d-none d-lg-block d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url(../../assets/media/illustrations/sigma-1/17.png)">
-            </div>
+
             <!--end::Illustration-->
         </div>
         <!--end::Wrapper-->
@@ -124,16 +125,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="text-center mb-10">
     <!--begin::Title-->
     <h1 class="text-dark mb-3">
-        Setup New Password
+        Configurer un nouveau mot de passe
     </h1>
     <!--end::Title-->
 
     <!--begin::Link-->
     <div class="text-gray-400 fw-semibold fs-4">
-        Already have reset your password ?
+        Vous avez déjà réinitialisé votre mot de passe ?
 
         <a href="{{ route('login') }}" class="link-primary fw-bold">
-            Sign in here
+            Se connecter
         </a>
     </div>
     <!--end::Link-->
@@ -188,7 +189,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!--end::Wrapper-->
  <!--begin::Hint-->
  <div class="text-muted">
-    Use 8 or more characters with a mix of letters, numbers & symbols.
+    Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles.
 </div>
 <x-input-error :messages="$errors->get('password')" class="mt-2" />
 <!--end::Hint-->
@@ -216,7 +217,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="text-center">
 
         <x-primary-button class="btn btn-lg btn-primary fw-bold">
-            {{ __(' Submit') }}
+            {{ __(' Envoyer') }}
         </x-primary-button>
 
 </div>
@@ -227,19 +228,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
         <!--end::Content-->
 
-        <!--begin::Footer-->
-        <div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
-            <!--begin::Links-->
-            <div class="d-flex flex-center fw-semibold fs-6">
-                <a href="https://keenthemes.com" class="text-muted text-hover-primary px-2" target="_blank">About</a>
-
-                <a href="https://devs.keenthemes.com" class="text-muted text-hover-primary px-2" target="_blank">Support</a>
-
-                <a href="https://themes.getbootstrap.com/product/craft-bootstrap-5-admin-dashboard-theme" class="text-muted text-hover-primary px-2" target="_blank">Purchase</a>
-            </div>
-            <!--end::Links-->
-        </div>
-        <!--end::Footer-->
     </div>
     <!--end::Body-->
 </div>

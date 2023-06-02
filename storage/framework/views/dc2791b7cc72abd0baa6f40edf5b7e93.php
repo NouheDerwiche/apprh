@@ -1,0 +1,1 @@
+<?php /**PATH C:\xampp\htdocs\derwiche\apprh\resources\views/fiche_de_paie/show.blade.php ENDPATH**/ ?>

@@ -13,6 +13,7 @@ use App\Http\Controllers\indexController;
 use App\Http\Controllers\newpdwController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FicheDePaieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,18 +45,36 @@ Route::middleware('auth')->group(function () {
     Route::get('/tache/{id}/edit', [TacheController::class, 'edit'])->name('tache.edit');
     Route::patch('/tache/{id}', [TacheController::class, 'update'])->name('tache.update');
     Route::delete('/tache/{id}', [TacheController::class, 'destroy'])->name('tache.destroy');
+    Route::get('/calendar', function () {
+        return view('calendar');
+    });
 
 
 
 });
+
 Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('roles', roleController::class);
     Route::resource('users', userController::class);
+    Route::get('/users', [userController::class, 'index'])->name('users.index');
+
+    Route::resource('fiche_de_paie', FicheDePaieController::class);
+    Route::get('/fiche_de_paie/{id}/imprimer', [FicheDePaieController::class, 'imprimer'])->name('fiche_de_paie.imprimer');
+
+    Route::post('/send-email', [userController::class, 'sendEmail'])->name('send.email');
+    Route::get('/send-email', [userController::class, 'sendEmail'])->name('send.email');
+
+
+    Route::post('/update-solde', [userController::class, 'updateSolde'])->name('update-solde');
+
     Route::resource("projets", ProjetController::class);
 
 
 });
+
+
+
 
 // ----------------------------- form jour_Feries ------------------------------//
 
@@ -67,6 +86,7 @@ Route::get('/holidays/{id}/edit', [HolidayController::class, 'edit'])->name('hol
 Route::put('/holidays/{id}', [HolidayController::class, 'update'])->name('holidays.update');
 Route::delete('/holidays/{id}', [HolidayController::class, 'destroy'])->name('holidays.destroy');
 Route::get('/holidays/{id}', [HolidayController::class, 'show'])->name('holidays.show');
+
 
 });
 // ----------------------------- form leaves ------------------------------//
@@ -81,6 +101,9 @@ Route::delete('/conges/{conge}', [CongeController::class, 'destroy'])->name('con
 Route::get('conges/{conge}', [CongeController::class, 'show'])->name('conges.show');
 
 Route::get('/user/conges', [CongeController::class, 'userConges'])->name('conges.user');
+//////
+
+Route::post('conges/{congeId}/{status}', [CongeController::class, 'congestate'])->name('conges.congestate');
 
 
 Route::get('/users/{user}/conges', [CongeController::class, 'showLeaves'])->name('users.conges');

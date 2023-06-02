@@ -73,8 +73,7 @@
                                 <!--begin::Card body-->
                 <div class="card-body">
                     <div class="calendar-container" wire:ignore>
-                        <livewire:calendar  />
-
+                        <livewire:calendar />
                     </div>
                     @livewireScripts
                     @stack('scripts')
