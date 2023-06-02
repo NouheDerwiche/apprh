@@ -52,7 +52,6 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('roles', roleController::class);
     Route::resource('users', userController::class);
-    Route::resource('myprofile',myprofileController ::class);
     Route::resource("projets", ProjetController::class);
 
 
