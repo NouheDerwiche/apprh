@@ -58,7 +58,9 @@ class userController extends Controller
         $isUpdatedThisMonth = Carbon::createFromFormat('Y-m-d H:i:s', $params->last_solde_updated_at)->isCurrentMonth();
 
 
+
         return view('users.index', compact('data', 'isUpdatedThisMonth'))->with('i', ($request->input('page', 1) - 1) * 5);
+    dd('data');
     }
 
     /**
