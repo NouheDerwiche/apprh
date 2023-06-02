@@ -98,9 +98,9 @@ Route::get('conges/{conge}', [CongeController::class, 'show'])->name('conges.sho
 
 Route::get('/user/conges', [CongeController::class, 'userConges'])->name('conges.user');
 //////
-Route::get('/conges/{x}/{y}', [CongeController::class, 'congestate']);
 
-/////
+Route::post('conges/{congeId}/{status}', [CongeController::class, 'congestate'])->name('conges.congestate');
+
 
 Route::get('/users/{user}/conges', [CongeController::class, 'showLeaves'])->name('users.conges');
 });

@@ -32,7 +32,7 @@
             </table>
 
             <div class="d-flex justify-content-between">
-                <a href="{{ route('conges.index') }}" class="btn btn-secondary">{{ __('Retour à la liste des congés') }}</a>
+                <a href="{{ route('conges.user') }}" class="btn btn-secondary">{{ __('Retour à la liste des congés') }}</a>
                 @if(auth()->user()->hasRole('admin'))
                 <a href="{{ route('conges.edit', $conge->id) }}" class="btn btn-primary">{{ __('Modifier le congé') }}</a>
                 @endif

@@ -1,11 +1,21 @@
 @extends('test.index')
 
 @section('content')
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+    <h1> Ajouter conge </h1>
+</div>
+
+
     <div class="container">
+
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Nouveau congé') }} {{ auth()->user()->solde }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('conges.store') }}">
@@ -15,7 +25,7 @@
                                 <label for="user_id"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Utilisateur') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-3">
                                     <select id="user_id" class="form-control @error('user_id') is-invalid @enderror"
                                         name="user_id" required>
 
@@ -39,7 +49,7 @@
                                 <label for="date_debut"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Date de début') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-3">
                                     <input id="date_debut" onchange="test()" type="date"
                                         class="form-control @error('date_debut') is-invalid @enderror" name="date_debut"
                                         value="{{ old('date_debut') }}" required autocomplete="date_debut" autofocus>
@@ -56,7 +66,7 @@
                                 <label for="date_fin"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Date de fin') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-3">
                                     <input id="date_fin" onchange="test()" type="date"
                                         class="form-control @error('date_fin') is-invalid @enderror" name="date_fin"
                                         value="{{ old('date_fin') }}" required autocomplete="date_fin">
@@ -73,7 +83,7 @@
                                 <label for="type_conge"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Type de congé') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-3">
                                     <select id="type_conge" onchange="test()"
                                         class="form-control @error('type_conge') is-invalid @enderror" name="type_conge"
                                         required>
@@ -94,8 +104,8 @@
                             <div class="form-group row">
                                 <label for="status"
                                     class="col-md-4 col-form-label text-md-right">{{ __('status') }}</label>
-                                <div class="col-md-6">
-                                    <label for="status">Status:</label>
+                                <div class="col-md-6 mb-3">
+
                                     <select class="form-control" id="status" name="status">
                                         <option value="en attente">En attente</option>
 
@@ -107,20 +117,17 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row mb-0">
+                            <div class="form-group row mb-3">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
 
                                         {{ __('Ajouter') }}
                                     </button>
-                                    @if (auth()->user()->hasRole('admin'))
-                                        {
-                                        <a href="{{ route('conges.index') }}" class="btn btn-secondary">}
-                                        @elseif(auth()->user()->hasRole('employe'))
-                                            <a href="{{ route('conges.user') }}" class="btn btn-secondary">
-                                    @endif
-                                    {{ __('Annuler') }}
-                                    </a>
+
+                                    <a class="btn btn-light-primary" href="{{ route('conges.user') }}"> Annuler</a>
+
+
+
                                 </div>
                             </div>
                         </form>
@@ -132,30 +139,30 @@
     </div>
 
     <script>
-        function test() {
-            var type = document.getElementById('type_conge').value
-            var d1 = new Date(document.getElementById('date_debut').value)
+       function test() {
+    var type = document.getElementById('type_conge').value;
+    var d1 = new Date(document.getElementById('date_debut').value);
+    var d2 = new Date(document.getElementById('date_fin').value);
 
-            var d2 = new Date(document.getElementById('date_fin').value)
+    if (d2 < d1) {
+        Swal.fire('Erreur', '', 'error');
+        document.getElementById('date_fin').value = null;
+    } else {
+        if (d1 && d2 && type && (type == 'conge solde' || type == 'conge malade')) {
+            var x = dateDiffInDays(d1, d2);
+            var userSolde = {!! auth()->user()->solde !!};
 
-            if (d2 < d1) {
-                alert('erreur')
-                document.getElementById('date_fin').value = null
-            } else {
-                if (d1 && d2 && type && (type == 'conge solde' || type == 'conge malade')) {
-                    $x = dateDiffInDays(d1, d2)
-                    $usersolde = {!! auth()->user()->solde !!}
-                    console.log($x, $usersolde);
-                    if ($x > $usersolde) {
-                        alert('Votre est Insiff')
-                        document.getElementById('date_fin').value = null
-                    }else{if ($x < $usersolde){
-                        $usersolde= Math.abs($x - $usersolde)
-                       alert('votre solde restant  est ' +$usersolde+ 'jour de conge si cette demande est accepter ')}}
-                }
-
+            if (x > userSolde) {
+                Swal.fire('Solde Insuffisant', '', 'warning');
+                document.getElementById('date_fin').value = null;
+            } else if (x < userSolde) {
+                var soldeRestant = Math.abs(x - userSolde);
+                Swal.fire('Félicitations', 'Votre solde restant est ' + soldeRestant + ' jour(s) de congé si cette demande est acceptée', 'success');
             }
         }
+    }
+}
+
 
         function dateDiffInDays(a, b) {
             const _MS_PER_DAY = 1000 * 60 * 60 * 24;

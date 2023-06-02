@@ -54,7 +54,7 @@ class HolidayController extends Controller
         $holiday->date2 = $request->date2;
         $holiday->save();
 
-        return redirect()->route('holidays.index')->with('success', 'Holiday added successfully.');
+        return redirect()->route('holidays.index')->with('success', ' le jour férié  a été ajouté avec succès.');
     }
 
     public function edit($id)
@@ -73,7 +73,7 @@ class HolidayController extends Controller
         $holiday->date2 = $request->date2;
         $holiday->save();
 
-        return redirect()->route('holidays.index')->with('success', 'Holiday updated successfully.');
+        return redirect()->route('holidays.index')->with('success', 'le jour férié a été modifié  avec succès.');
     }
 
     public function destroy($id)
@@ -82,7 +82,7 @@ class HolidayController extends Controller
 
         $holiday->delete();
 
-        return redirect()->route('holidays.index')->with('success', 'Holiday deleted successfully.');
+        return redirect()->route('holidays.index')->with('success', 'le jour férié été supprimé  avec succès.');
     }
 
     public function show($id)

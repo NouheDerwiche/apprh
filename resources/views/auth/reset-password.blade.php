@@ -33,10 +33,12 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
+
                     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-                            <link href="../../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css">
-                            <link href="../../assets/css/style.bundle.css" rel="stylesheet" type="text/css">
-                        <!--end::Global Stylesheets Bundle-->
+                    <link href="{{asset('../../assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css">
+                    <link href="{{asset('../../assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css">
+                <!--end::Global Stylesheets Bundle-->
+
 
                     <!--Begin::Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

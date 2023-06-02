@@ -138,7 +138,7 @@
                                     confirmDialog.appendChild(title);
 
                                     var message = document.createElement('p');
-                                    message.textContent = 'Êtes-vous sûr de vouloir supprimer cet utilisateur ?';
+                                    message.textContent = 'Êtes-vous sûr de vouloir supprimer cet Role ?';
                                     confirmDialog.appendChild(message);
 
                                     var confirmBtn = document.createElement('button');
@@ -205,7 +205,7 @@
                                     confirmDialog.appendChild(title);
 
                                     var message = document.createElement('p');
-                                    message.textContent = 'Êtes-vous sûr de vouloir supprimer cet utilisateur ?';
+                                    message.textContent = 'Êtes-vous sûr de vouloir supprimer cet Role ?';
                                     confirmDialog.appendChild(message);
 
                                     var confirmBtn = document.createElement('button');

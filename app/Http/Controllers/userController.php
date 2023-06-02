@@ -52,7 +52,14 @@ class userController extends Controller
         $user = Auth::user();
         $solde = $user->solde;
 
-        return view('users.index', compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
+
+        $params = Parametre::firstOrFail();
+
+        $isUpdatedThisMonth = Carbon::createFromFormat('Y-m-d H:i:s', $params->last_solde_updated_at)->isCurrentMonth();
+
+
+
+        return view('users.index', compact('data', 'isUpdatedThisMonth'))->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**

@@ -1,5 +1,4 @@
-@extends('test.index')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
 
@@ -51,7 +50,7 @@
                                     </h2>
 
                                     <div class="card-toolbar">
-                                        <a href="{{ route('tache.create') }}" class="btn btn-primary">
+                                        <a href="<?php echo e(route('tache.create')); ?>" class="btn btn-primary">
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                                             <span class="svg-icon svg-icon-2"><svg width="24" height="24"
                                                     viewbox="0 0 24 24" fill="none"
@@ -73,10 +72,25 @@
                                 <!--begin::Card body-->
                 <div class="card-body">
                     <div class="calendar-container" wire:ignore>
-                        <livewire:calendar />
+                        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('calendar', [])->html();
+} elseif ($_instance->childHasBeenRendered('FMxJsvu')) {
+    $componentId = $_instance->getRenderedChildComponentId('FMxJsvu');
+    $componentTag = $_instance->getRenderedChildComponentTagName('FMxJsvu');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('FMxJsvu');
+} else {
+    $response = \Livewire\Livewire::mount('calendar', []);
+    $html = $response->html();
+    $_instance->logRenderedChild('FMxJsvu', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                     </div>
-                    @livewireScripts
-                    @stack('scripts')
+                    <?php echo \Livewire\Livewire::scripts(); ?>
+
+                    <?php echo $__env->yieldPushContent('scripts'); ?>
                 </div>
                 <!--end::Card body-->
 
@@ -87,4 +101,6 @@
                             <!--end::Card-->
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('test.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\derwiche\apprh\resources\views/calendar.blade.php ENDPATH**/ ?>

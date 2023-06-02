@@ -30,7 +30,7 @@
             </table>
 
             <div class="d-flex justify-content-between">
-                <a href="<?php echo e(route('conges.index')); ?>" class="btn btn-secondary"><?php echo e(__('Retour à la liste des congés')); ?></a>
+                <a href="<?php echo e(route('conges.user')); ?>" class="btn btn-secondary"><?php echo e(__('Retour à la liste des congés')); ?></a>
                 <?php if(auth()->user()->hasRole('admin')): ?>
                 <a href="<?php echo e(route('conges.edit', $conge->id)); ?>" class="btn btn-primary"><?php echo e(__('Modifier le congé')); ?></a>
                 <?php endif; ?>

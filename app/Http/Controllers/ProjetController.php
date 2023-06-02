@@ -4,15 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\projet;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Pagination\LengthAwarePaginator;
-
-
-
 
 class ProjetController extends Controller
 {
-
 
     /**
      * Display a listing of the resource.
@@ -23,11 +17,11 @@ class ProjetController extends Controller
 
         $projets = Projet::where('titre', 'like', "%$search%")->paginate(10);
 
-         //On récupère tous les Post
-       $projets = Projet::all();
+        //On récupère tous les Post
+        $projets = Projet::all();
 
-    // On transmet les Post à la vue
-    return view("projets.index", compact("projets"));
+        // On transmet les Post à la vue
+        return view("projets.index", compact("projets"));
     }
 
     /**
@@ -47,15 +41,14 @@ class ProjetController extends Controller
         $request->validate([
             'titre' => 'required',
             'debut' => 'required',
-            'fin' => ['required', 'date','after:debut'],
+            'fin' => ['required', 'date', 'after:debut'],
 
         ]);
-
 
         projet::create($request->all());
 
         return redirect()->route('projets.index')
-                        ->with('success','Projet created successfully.');
+            ->with('success', 'Projet created successfully.');
     }
 
     /**
@@ -63,7 +56,7 @@ class ProjetController extends Controller
      */
     public function show(projet $projet)
     {
-        return view('projets.show',compact('projet'));
+        return view('projets.show', compact('projet'));
 
     }
 
@@ -73,7 +66,7 @@ class ProjetController extends Controller
     public function edit(projet $projet)
     {
 
-        return view('projets.edit',compact('projet'));
+        return view('projets.edit', compact('projet'));
 
     }
 
@@ -92,7 +85,7 @@ class ProjetController extends Controller
         $product->update($request->all());
 
         return redirect()->route('products.index')
-                        ->with('success','Product updated successfully');
+            ->with('success', 'Product updated successfully');
     }
 
     /**
@@ -103,6 +96,6 @@ class ProjetController extends Controller
         $projet->delete();
 
         return redirect()->route('projets.index')
-                        ->with('success','Projet deleted successfully');
+            ->with('success', 'Projet deleted successfully');
     }
 }

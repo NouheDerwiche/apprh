@@ -1,6 +1,7 @@
 <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
 
-@livewireStyles
+<?php echo \Livewire\Livewire::styles(); ?>
+
 
 <div>
     <div id='calendar-container' wire:ignore>
@@ -8,9 +9,10 @@
     </div>
 </div>
 
-@livewireScripts
+<?php echo \Livewire\Livewire::scripts(); ?>
 
-@push('scripts')
+
+<?php $__env->startPush('scripts'); ?>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales-all.min.js"></script>
 
@@ -29,7 +31,7 @@
 
             editable: true,
 
-            events: @json($taches),
+            events: <?php echo json_encode($taches, 15, 512) ?>,
             editable: true,
             selectable: true,
             eventClick: function (info) {
@@ -91,5 +93,6 @@
     });
 </script>
 
-@endpush
+<?php $__env->stopPush(); ?>
 
+<?php /**PATH C:\xampp\htdocs\derwiche\apprh\resources\views/livewire/calendar.blade.php ENDPATH**/ ?>

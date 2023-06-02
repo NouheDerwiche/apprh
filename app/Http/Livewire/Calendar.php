@@ -2,13 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Models\Projet;
 use App\Models\tache;
 use App\Models\User;
-use App\Models\Projet;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-
+use Livewire\Component;
 
 class Calendar extends Component
 {
@@ -38,17 +36,10 @@ class Calendar extends Component
                 'description' => $tache->description,
                 'start' => $tache->debut,
                 'end' => $tache->fin,
-                'nbh' => $tache->nb_heures
+                'nbh' => $tache->nb_heures,
             ];
         }
     }
-
-
-
-
-
-
-
 
     public function render()
     {
@@ -57,6 +48,5 @@ class Calendar extends Component
             'taches' => $taches->toJson(),
         ]);
     }
-
 
 }
