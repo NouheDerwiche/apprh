@@ -30,7 +30,7 @@ class CongeController extends Controller
             $query->where('status', $request->statut);
         }
 
-        $conges = $query->paginate(3);
+        $conges = $query->paginate(5);
 
         // Loop through each "conge" to calculate the duration in days
         foreach ($conges as $conge) {
@@ -42,8 +42,11 @@ class CongeController extends Controller
 
         $user = Auth::user();
 
-        // Pass the paginated results to the view
-        return view('conges.index', compact('conges'));
+    // Regrouper les congés par type
+    $congesParType = $conges->groupBy('type_conge');
+
+    // Passer les données à la vue
+    return view('conges.index', compact('conges', 'congesParType'));
     }
 
 

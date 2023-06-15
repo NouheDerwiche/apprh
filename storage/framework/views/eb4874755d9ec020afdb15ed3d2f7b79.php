@@ -47,6 +47,16 @@
                                     <?php echo Form::text('name', null, ['placeholder' => 'Nom', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -54,6 +64,16 @@
                                     <?php echo Form::text('prenom', null, ['placeholder' => 'Prénom', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['prenom'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -61,6 +81,16 @@
                                     <?php echo Form::text('phone', null, ['placeholder' => 'phone', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['phone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
 
@@ -70,6 +100,16 @@
                                     <?php echo Form::text('address', null, ['placeholder' => 'address', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['address'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -77,6 +117,16 @@
                                     <?php echo Form::text('cin', null, ['placeholder' => 'cin', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['cin'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
 
@@ -90,6 +140,16 @@
                                     <?php echo Form::text('num_emp', null, ['placeholder' => 'num_emp', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['num_emp'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -97,6 +157,16 @@
                                     <?php echo Form::text('ville', null, ['placeholder' => 'ville', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['ville'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -104,6 +174,16 @@
                                     <?php echo Form::text('codepostal', null, ['placeholder' => 'codepostal', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['codepostal'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -111,6 +191,16 @@
                                     <?php echo Form::text('date_naiss', null, ['placeholder' => 'date_naiss', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['date_naiss'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -118,6 +208,16 @@
                                     <?php echo Form::text('salaire', null, ['placeholder' => 'salaire', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['salaire'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -126,6 +226,16 @@
                                     <?php echo Form::text('solde', null, ['placeholder' => 'solde', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['solde'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -135,6 +245,16 @@
 
 
                                 </div>
+                                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -142,6 +262,16 @@
                                     <?php echo Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']); ?>
 
                                 </div>
+                                <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -150,6 +280,16 @@
 
 
                                 </div>
+                                <?php $__errorArgs = ['confirm-password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -158,6 +298,16 @@
 
 
                                 </div>
+                                <?php $__errorArgs = ['roles'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -166,6 +316,16 @@
                                         style="color: rgb(29, 115, 244);">
 
                                 </div>
+                                <?php $__errorArgs = ['avatar'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="text-danger"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
 

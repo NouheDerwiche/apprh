@@ -8,7 +8,7 @@
             <div class="col-lg-12 margin-tb">
 
                 <div class="pull-right">
-                    <a class="btn btn-light-primary" href="{{ route('conges.index') }}">Annuler</a>
+                    <a class="btn btn-light-primary" href="{{ route('conges.user') }}">Annuler</a>
                 </div>
             </div>
         </div>
@@ -60,7 +60,10 @@
                                 </style>
                                 <table class="table table-bordered justify-content-center align-items-center" style="width: 900px; height: 300px; margin: 4%">
                                     <tbody>
-
+                                        <tr>
+                                            <th>Numero de Demande</th>
+                                            <td>{{ $conge->id  }} </td>
+                                        </tr>
                                         <tr>
                                             <th>Matricule:</th>
                                             <td>{{ $conge->user->num_emp }} </td>
@@ -90,7 +93,7 @@
                                             <td>{{ $conge->type_conge }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Statut') }}</th>
+                                            <th>{{ __('Statuts') }}</th>
                                             <td>{{ $conge->status }}</td>
                                         </tr>
 

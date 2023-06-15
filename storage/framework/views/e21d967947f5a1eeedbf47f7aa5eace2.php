@@ -2,21 +2,21 @@
 
 
 
-<div class=" container-xxl ">
 
-    <div class="col-lg-12 margin-tb">
-      
-        <div class="pull-right mb-3">
-            <a class="btn btn-light-primary" href="<?php echo e(route('holidays.index')); ?>"> Retour</a>
-        </div>
-
-</div>
 
 <!--begin::Post-->
 <div class="post fs-6 d-flex flex-column-fluid" id="kt_post">
     <!--begin::Container-->
 <div class=" container-xxl ">
+    <div class=" container-xxl ">
 
+        <div class="col-lg-12 margin-tb">
+
+            <div class="pull-right mb-3">
+                <a class="btn btn-light-primary" href="<?php echo e(route('holidays.index')); ?>"> Retour</a>
+            </div>
+
+    </div>
 <!--begin::Card-->
 <div class="card card-flush ">
 <!--begin::Card header-->

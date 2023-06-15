@@ -7,10 +7,11 @@ use App\Http\Controllers\roleController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\CongeController;
 
-use App\Http\Controllers\ProjetController;
-use App\Http\Controllers\TacheController;
 use App\Http\Controllers\indexController;
+use App\Http\Controllers\TacheController;
 use App\Http\Controllers\newpdwController;
+use App\Http\Controllers\ProjetController;
+use App\Http\Controllers\ChartJSController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FicheDePaieController;
@@ -53,12 +54,13 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware' => ['auth']], function() {
 
+    Route::get('chartjs', [ChartJsController::class, 'index'])->name('chartjs.index');
     Route::resource('roles', roleController::class);
     Route::resource('users', userController::class);
     Route::get('/users', [userController::class, 'index'])->name('users.index');
 
     Route::resource('fiche_de_paie', FicheDePaieController::class);
-    Route::get('/fiche_de_paie/{id}/imprimer', [FicheDePaieController::class, 'imprimer'])->name('fiche_de_paie.imprimer');
+    Route::get('fiche_de_paie/{id}/imprimer', [FicheDePaieController::class,'imprimer'])->name('fiche_de_paie.imprimer');
 
     Route::post('/send-email', [userController::class, 'sendEmail'])->name('send.email');
     Route::get('/send-email', [userController::class, 'sendEmail'])->name('send.email');

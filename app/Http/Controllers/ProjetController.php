@@ -22,12 +22,8 @@ class ProjetController extends Controller
     {
         $search = $request->get('search');
 
-        $projets = Projet::where('titre', 'like', "%$search%")->paginate(10);
+        $projets = Projet::where('titre', 'like', "%$search%")->paginate(2);
 
-        //On récupère tous les Post
-        $projets = Projet::all();
-
-        // On transmet les Post à la vue
         return view("projets.index", compact("projets"));
     }
 
@@ -49,13 +45,14 @@ class ProjetController extends Controller
             'titre' => '',
             'debut' => 'required',
             'fin' => ['required', 'date', 'after:debut'],
+            'description'=>'required',
 
         ]);
 
         projet::create($request->all());
 
         return redirect()->route('projets.index')
-            ->with('success', 'Projet created successfully.');
+            ->with('success', 'Projet créé avec succès..');
     }
 
     /**
@@ -80,20 +77,24 @@ class ProjetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, projet $projet)
-    {
-        $request->validate([
-            'titre' => 'required',
-            'debut' => 'required',
-            'fin' => 'required',
+ /**
+ * Update the specified resource in storage.
+ */
+public function update(Request $request, projet $projet)
+{
+    $request->validate([
+        'titre' => 'required',
+        'debut' => 'required',
+        'fin' => ['required', 'date', 'after:debut'],
+        'description' => 'required',
+    ]);
 
-        ]);
+    $projet->update($request->all());
 
-        $product->update($request->all());
+    return redirect()->route('projets.index')
+        ->with('success', 'Projet mis à jour avec succès.');
+}
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product updated successfully');
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -103,6 +104,6 @@ class ProjetController extends Controller
         $projet->delete();
 
         return redirect()->route('projets.index')
-            ->with('success', 'Projet deleted successfully');
+            ->with('success', 'Projet supprimé avec succès.');
     }
 }

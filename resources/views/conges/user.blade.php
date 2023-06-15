@@ -172,7 +172,7 @@
 
                 <!--begin::Container-->
                 <div class=" container-xxl ">
-                    <span class="fs-6 fw-bolder text-gray-800 d-block mb-2" for="statut">Rechercher par status</span>
+                    <span class="fs-6 fw-bolder text-gray-800 d-block mb-2" for="statut">Rechercher par statuts</span>
                     <form action="{{ route('conges.user') }}" method="GET" class="d-flex">
 
                         <div class="d-flex align-items-center btn-sm  position-relative my-1 me-5 mb-3">
@@ -243,7 +243,7 @@
                                 <th width="280px"><strong>Date Début</strong></th>
                                 <th width="280px"><strong>Date Fin</strong></th>
                                 <th width="280px"><strong>Type Congé</strong></th>
-                                <th width="280px"><strong>Status</strong></th>
+                                <th width="280px"><strong>Statuts</strong></th>
                                 <th width="280px"><strong>Nombre jours</strong></th>
                                 {{-- <th>solde</th> --}}
                                 <th width="280px"><strong>Actions</strong></th>

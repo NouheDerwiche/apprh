@@ -13,5 +13,8 @@
     <p><strong>Salaire final :</strong> {{ $ficheDePaie->salairefinal }}</p>
 
     <a href="{{ route('fiche_de_paie.index') }}">Retour à la liste des fiches de paie</a>
+
+    <a href="{{ route('fiche_de_paie.imprimer', $ficheDePaie->id) }}" target="_blank">Imprimer la fiche de paie</a>
+
 @endsection
 
