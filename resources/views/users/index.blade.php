@@ -25,7 +25,7 @@
         <!--begin::Container-->
 
         <div class=" container-xxl ">
-{{ dd(',kfnvfvr'); }}
+
             <!--begin::Card-->
             <div class="card card-flush ">
                 <!--begin::Card header-->

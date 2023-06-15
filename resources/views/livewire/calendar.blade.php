@@ -32,9 +32,17 @@
             events: @json($taches),
             editable: true,
             selectable: true,
+
             eventClick: function (info) {
+                var event = info.event;
+
+    // Vérifier si l'événement est un jour férié
+    if (event.extendedProps.isHoliday) {
+        return; // Ne rien faire pour les jours fériés
+    }
     var title = info.event.title;
     var nom = info.event.extendedProps.nom;
+    var prenom=info.event.extendedProps.prenom;
     var projet = info.event.extendedProps.projet;
     var description = info.event.extendedProps.description;
     var localisation = info.event.extendedProps.localisation;
@@ -42,47 +50,25 @@
     var eventId = info.event.id;
 
     Swal.fire({
-        title: 'Détails de l\'événement',
-        html: `<div table="table table-bordered justify-content-center align-items-center">
-            <tbody>
-                <tr><th>
-                    <tr><th> <p><strong>Titre :</strong> </th> <td>${title}</td></tr>
-                    <tr><th> <p><strong>Nom Employé :</strong> ${nom}</td></tr>
-                        <tr><th><p><strong>Nom Projet :</strong>${projet}</td></tr>
-                            <tr><th> <p><strong>Description :</strong> ${description}</td></tr>
-                                <tr><th><p><strong>Localisation :</strong>${localisation}</td></tr>
-                                    <tr><th> <p><strong>Nombre d'heures :</strong> ${nbheures}</td></tr>
-
-
-            </tbody>
+        title: 'Détails de tache',
+        html: `
+            <div>
+                <p><strong>Titre :</strong> ${title}</p>
+                <p><strong>Nom Employé :</strong> ${nom} ${prenom}</p>
+                <p><strong>Nom Projet :</strong> ${projet}</p>
+                <p><strong>Description :</strong> ${description}</p>
+                <p><strong>Localisation :</strong> ${localisation}</p>
+                <p><strong>Nombre d'heures :</strong> ${nbheures}</p>
             </div>
         `,
-        showCancelButton: true,
-        cancelButtonText: 'Modifier',
-        confirmButtonText: 'Supprimer',
+
+        showCloseButton: true,
         showLoaderOnConfirm: true,
-        preConfirm: (choice) => {
-            if (choice === 'cancel') {
-                // Action de modification
-                // Rediriger vers la page de modification avec l'identifiant de l'événement
-                window.location.href = '/events/' + eventId + '/edit';
-            } else if (choice === 'confirm') {
-                // Action de suppression
-                // Envoyer une requête AJAX pour supprimer l'événement
-                // Exemple avec axios
-                axios.delete('/events/' + eventId)
-                    .then(response => {
-                        Swal.fire('Suppression', 'L\'événement a été supprimé avec succès.', 'success');
-                        // Recharger la page ou effectuer une autre action après la suppression
-                        location.reload();
-                    })
-                    .catch(error => {
-                        Swal.fire('Erreur', 'Une erreur est survenue lors de la suppression de l\'événement.', 'error');
-                    });
-            }
-        }
+
     });
 }
+
+
 
           });
 

@@ -45,9 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tache/{id}/edit', [TacheController::class, 'edit'])->name('tache.edit');
     Route::patch('/tache/{id}', [TacheController::class, 'update'])->name('tache.update');
     Route::delete('/tache/{id}', [TacheController::class, 'destroy'])->name('tache.destroy');
-    Route::get('/calendar', function () {
-        return view('calendar');
-    });
+    Route::get('/calendar', function () {return view('calendar'); })->name('calendar');;
 
 
 

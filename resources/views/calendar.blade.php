@@ -8,35 +8,7 @@
 
                 <!--begin::Content-->
                 <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
-                    <!--begin::Toolbar-->
-                    <div class="toolbar" id="kt_toolbar">
-                        <div class=" container-fluid  d-flex flex-stack flex-wrap flex-sm-nowrap">
-                            <!--begin::Info-->
-                            <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
-                                <!--begin::Title-->
-                                <h1 class="text-dark fw-bold my-1 fs-2">
-                                    Calendrier </h1>
-                                <!--end::Title-->
 
-                                <!--begin::Breadcrumb-->
-                                <ul class="breadcrumb fw-semibold fs-base my-1">
-                                    <li class="breadcrumb-item text-muted">
-                                        <a href="../index.html" class="text-muted text-hover-primary">
-                                            Tableau de bord </a>
-                                    </li>
-
-                                    <li class="breadcrumb-item text-dark">
-                                        Calendrier </li>
-
-                                </ul>
-                                <!--end::Breadcrumb-->
-                            </div>
-                            <!--end::Info-->
-
-
-                        </div>
-                    </div>
-                    <!--end::Toolbar-->
 
                     <!--begin::Post-->
                     <div class="post fs-6 d-flex flex-column-fluid" id="kt_post">
@@ -46,7 +18,7 @@
                             <div class="card ">
                                 <!--begin::Card header-->
                                 <div class="card-header">
-                                    <h2 class="card-title fw-bold">
+                                    <h2 class="card-title fw-bold text-center">
                                         Calendrier
                                     </h2>
 

@@ -7,35 +7,7 @@
 
                 <!--begin::Content-->
                 <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
-                    <!--begin::Toolbar-->
-                    <div class="toolbar" id="kt_toolbar">
-                        <div class=" container-fluid  d-flex flex-stack flex-wrap flex-sm-nowrap">
-                            <!--begin::Info-->
-                            <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
-                                <!--begin::Title-->
-                                <h1 class="text-dark fw-bold my-1 fs-2">
-                                    Calendrier </h1>
-                                <!--end::Title-->
 
-                                <!--begin::Breadcrumb-->
-                                <ul class="breadcrumb fw-semibold fs-base my-1">
-                                    <li class="breadcrumb-item text-muted">
-                                        <a href="../index.html" class="text-muted text-hover-primary">
-                                            Tableau de bord </a>
-                                    </li>
-
-                                    <li class="breadcrumb-item text-dark">
-                                        Calendrier </li>
-
-                                </ul>
-                                <!--end::Breadcrumb-->
-                            </div>
-                            <!--end::Info-->
-
-
-                        </div>
-                    </div>
-                    <!--end::Toolbar-->
 
                     <!--begin::Post-->
                     <div class="post fs-6 d-flex flex-column-fluid" id="kt_post">
@@ -45,7 +17,7 @@
                             <div class="card ">
                                 <!--begin::Card header-->
                                 <div class="card-header">
-                                    <h2 class="card-title fw-bold">
+                                    <h2 class="card-title fw-bold text-center">
                                         Calendrier
                                     </h2>
 
@@ -75,15 +47,15 @@
                         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('calendar', [])->html();
-} elseif ($_instance->childHasBeenRendered('KehtnxX')) {
-    $componentId = $_instance->getRenderedChildComponentId('KehtnxX');
-    $componentTag = $_instance->getRenderedChildComponentTagName('KehtnxX');
+} elseif ($_instance->childHasBeenRendered('bQ6Wxli')) {
+    $componentId = $_instance->getRenderedChildComponentId('bQ6Wxli');
+    $componentTag = $_instance->getRenderedChildComponentTagName('bQ6Wxli');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('KehtnxX');
+    $_instance->preserveRenderedChild('bQ6Wxli');
 } else {
     $response = \Livewire\Livewire::mount('calendar', []);
     $html = $response->html();
-    $_instance->logRenderedChild('KehtnxX', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('bQ6Wxli', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

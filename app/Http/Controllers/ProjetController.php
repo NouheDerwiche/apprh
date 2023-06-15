@@ -11,6 +11,13 @@ class ProjetController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('permission:Voir_projet|Ajouter projet|Modifier projet|Supprimer projet', ['only' => ['index', 'store']]);
+        $this->middleware('permission:Ajouter projet', ['only' => ['create', 'store']]);
+        $this->middleware('permission:Modifier projet', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:Supprimer projet', ['only' => ['destroy']]);
+    }
     public function index(Request $request)
     {
         $search = $request->get('search');
@@ -39,7 +46,7 @@ class ProjetController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'titre' => 'required',
+            'titre' => '',
             'debut' => 'required',
             'fin' => ['required', 'date', 'after:debut'],
 

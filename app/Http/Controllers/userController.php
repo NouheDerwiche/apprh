@@ -60,7 +60,7 @@ class userController extends Controller
 
 
         return view('users.index', compact('data', 'isUpdatedThisMonth'))->with('i', ($request->input('page', 1) - 1) * 5);
-    dd('data');
+    
     }
 
     /**

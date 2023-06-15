@@ -6,8 +6,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
+                <div class="pull-right mb-3">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <h1>Ajouter tâche</h1>
+                    </div>
+                    <a class="btn btn-light-primary" href="<?php echo e(route('calendar')); ?>"> Annuler</a>
+                </div>
                 <div class="card">
-                    <h1> Créer une nouvelle tâche</h1>
+
 
                     <div class="card-body">
                         <?php if($errors->any()): ?>

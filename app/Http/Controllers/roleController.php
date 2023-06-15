@@ -35,13 +35,13 @@ class roleController extends Controller
     public function index(Request $request)
     {
         // Récupérer le rôle de l'utilisateur authentifié
-        $userRole = auth()->user()->hasRole('Admin') ? 'Admin' : (auth()->user()->hasRole('rh') ? 'rh' : 'employe');
+        $userRole = auth()->user()->hasRole('Admin') ? 'Admin' : (auth()->user()->hasRole('DirecteurRH') ? 'DirecteurRH' : 'employe');
 
         // Récupérer tous les éléments si l'utilisateur est un administrateur ou rh, sinon récupérer seulement la liste
         if ($userRole === 'Admin') {
             $query = Role::query();
-        } elseif ($userRole === 'rh') {
-            $query = Role::whereIn('name', ['employe', 'rh']);
+        } elseif ($userRole === 'DirecteurRH') {
+            $query = Role::whereIn('name', ['employe', 'DirecteurRH']);
         } else {
             $query = Role::where('name', 'employe');
         }
