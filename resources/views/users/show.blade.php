@@ -2,19 +2,20 @@
 
 @section('content')
     <!--begin::Post-->
-    <div class="container-xxl">
-        <div class="fv-row mb-10">
-            <div class="col-lg-12 margin-tb">
 
-                <div class="pull-right">
-                    <a class="btn btn-light-primary" href="{{ route('users.index') }}">Annuler</a>
-                </div>
-            </div>
-        </div>
 
         <div class="post fs-6 d-flex flex-column-fluid" id="kt_post">
             <!--begin::Container-->
             <div class="container-xxl">
+                <div class="container-xxl">
+                    <div class="fv-row mb-10">
+                        <div class="col-lg-12 margin-tb">
+
+                            <div class="pull-right">
+                                <a class="btn btn-light-primary" href="{{ route('users.index') }}">Annuler</a>
+                            </div>
+                        </div>
+                    </div>
                 <!--begin::Card-->
                 <div class="card card-flush">
                     <!--begin::Card header-->

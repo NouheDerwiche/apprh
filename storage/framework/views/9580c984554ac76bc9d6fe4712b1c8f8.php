@@ -158,7 +158,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="form-group row">
                                 <label for="status"
-                                    class="col-md-4 col-form-label text-md-right"><strong><?php echo e(__('status')); ?></strong></label>
+                                    class="col-md-4 col-form-label text-md-right"><strong><?php echo e(__('statuts')); ?></strong></label>
                                 <div class="col-md-6 mb-3">
 
                                     <select class="form-control" id="status" name="status">

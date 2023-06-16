@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\fiche_de_paie;
 use App\Models\User;
-
-use Barryvdh\DomPDF\Facade as PDF;
+use App\Models\Conge;
+use Illuminate\Http\Request;
 
 class FicheDePaieController extends Controller
 {
@@ -80,9 +79,60 @@ class FicheDePaieController extends Controller
     {
         $ficheDePaie = fiche_de_paie::findOrFail($id);
 
-        $pdf = PDF::loadView('fiche_de_paie.pdf', compact('ficheDePaie'));
+        /*   $pdf = Pdf::loadView('fiche_de_paie.show', compact('ficheDePaie'));
 
-        return $pdf->download('fiche_de_paie.pdf');
+    return $pdf->download('fiche_de_paie.pdf'); */
     }
-    
+
+    public function generer()
+    {
+        $employees = App\Models\User::all();
+        foreach ($employees as $user) {
+            $fiche = new Fiche();
+            $fiche->user_id = $user->id;
+            $fiche->month = date('m');
+            $fiche->salaire_totale = $user->salaire;
+            $fiche->save();
+
+            $totale = 0;
+
+            $detail1 = new FicheDetail();
+            $detail1->fiche_id = $fiche->id;
+            $detail1->code = '4404';
+            $detail1->designation = "Salaire de base";
+            $detail1->renumeration = $user->salaire;
+            $detail1->save();
+            $totale = $totale + $user->salaire;
+
+            $conges = Conge::where('user_id', $user->id)
+                ->where('type_conge', 'conge_non_solde')
+                ->where('status', 'accepte')
+                ->whereMonth($fiche->month)
+                ->get();
+
+            if ($conges->count() > 0) {
+                foreach ($conges as $cg) {
+                    # code...
+                    $detail2 = new FicheDetail();
+                    $detail2->fiche_id = $fiche->id;
+                    $detail2->code = '5000';
+                    $detail2->designation = "conges non solde " . $cg->date_debut;
+                    $detail2->taux = '20%';
+                    $detail2->renumeration = 0;
+                    $detail2->retenu = $user->salaire * 0.2;
+
+                    $detail2->save();
+                    $totale = $totale - $detail2->retenu;
+                }
+
+            }
+            $fiche->salairefinale = $totale;
+            $fiche->save();
+
+            return back();
+
+            # code...
+        }
+    }
+
 }

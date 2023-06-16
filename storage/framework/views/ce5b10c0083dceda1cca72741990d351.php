@@ -6,7 +6,7 @@
             <div class="col-lg-12 margin-tb">
 
                 <div class="pull-right">
-                    <a class="btn btn-light-primary" href="<?php echo e(route('conges.index')); ?>">Annuler</a>
+                    <a class="btn btn-light-primary" href="<?php echo e(route('conges.user')); ?>">Annuler</a>
                 </div>
             </div>
         </div>
@@ -58,7 +58,10 @@
                                 </style>
                                 <table class="table table-bordered justify-content-center align-items-center" style="width: 900px; height: 300px; margin: 4%">
                                     <tbody>
-
+                                        <tr>
+                                            <th>Numero de Demande</th>
+                                            <td><?php echo e($conge->id); ?> </td>
+                                        </tr>
                                         <tr>
                                             <th>Matricule:</th>
                                             <td><?php echo e($conge->user->num_emp); ?> </td>
@@ -88,7 +91,7 @@
                                             <td><?php echo e($conge->type_conge); ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo e(__('Statut')); ?></th>
+                                            <th><?php echo e(__('Statuts')); ?></th>
                                             <td><?php echo e($conge->status); ?></td>
                                         </tr>
 

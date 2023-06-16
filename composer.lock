@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cce922eecdd03723f06b68a34128dd76",
+    "content-hash": "d905278f8f636a200822327cdf3e1177",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -1579,6 +1579,50 @@
             },
             "abandoned": "spatie/laravel-html",
             "time": "2023-04-25T02:46:11+00:00"
+        },
+        {
+            "name": "laraveldaily/laravel-charts",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelDaily/laravel-charts.git",
+                "reference": "42b6236115675c56f029f4daac7a8a529d04766d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelDaily/laravel-charts/zipball/42b6236115675c56f029f4daac7a8a529d04766d",
+                "reference": "42b6236115675c56f029f4daac7a8a529d04766d",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelDaily\\LaravelCharts\\LaravelChartsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelDaily\\LaravelCharts\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Povilas Korop",
+                    "email": "povilas@laraveldaily.com"
+                }
+            ],
+            "description": "Create charts and reports from Laravel",
+            "support": {
+                "issues": "https://github.com/LaravelDaily/laravel-charts/issues",
+                "source": "https://github.com/LaravelDaily/laravel-charts/tree/0.2.0"
+            },
+            "time": "2023-03-30T18:03:34+00:00"
         },
         {
             "name": "league/commonmark",

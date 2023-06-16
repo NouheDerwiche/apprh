@@ -60,6 +60,43 @@ class userController extends Controller
 
 
         return view('users.index', compact('data', 'isUpdatedThisMonth'))->with('i', ($request->input('page', 1) - 1) * 5);
+
+
+
+
+
+ // Récupérer les rôles des utilisateurs depuis la base de données
+ $roles = Role::pluck('name');
+
+ // Compter le nombre d'utilisateurs par rôle
+ $userCountByRole = User::groupBy('role_id')
+     ->select('role_id', DB::raw('count(*) as total'))
+     ->pluck('total', 'role_id');
+
+ // Générer les données pour le graphique pie
+ $pieData = new Collection();
+ foreach ($roles as $role) {
+     $count = $userCountByRole->get($role->id, 0);
+     $pieData->push([
+         'role' => $role->name,
+         'count' => $count,
+     ]);
+ }
+
+ //prespectif :
+
+ // Convertir les données en format JSON
+ $pieDataJson = $pieData->toJson();
+
+ // ...
+
+ return view('chartjs', compact('pieDataJson'));
+
+
+
+
+
+
     }
 
     /**
@@ -91,7 +128,7 @@ class userController extends Controller
             'ville' => 'required',
             'codepostal' => 'required',
             'solde' => 'required',
-
+            'cin' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required',
@@ -111,7 +148,7 @@ class userController extends Controller
             $filename = time() . '_' . uniqid() . '.' . $avatar->getClientOriginalExtension();
 
             // Stocker l'image dans le dossier de destination
-            $avatar->storeAs('storage/app/public/assets/media/avatars', $filename);
+            $avatar->storeAs('public/assets/media/avatars', $filename);
 
             // Ajouter le nom du fichier à l'entrée utilisateur
             $input['avatar'] = $filename;

@@ -9,7 +9,7 @@ class Projet extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'titre', 'debut','fin'
+        'titre', 'debut','fin','description'
     ];
     public function taches()
     {

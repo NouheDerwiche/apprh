@@ -3,130 +3,21 @@
 
 
 <?php $__env->startSection('content'); ?>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <h1> Listes des demandes</h1>
-    </div>
+
     <!--begin::Post-->
 
     <!--begin::Container-->
 
 
     <!--begin::Card-->
-    <div class="post fs-6 d-flex flex-column-fluid" id="kt_post">
-        <div class=" container-xxl ">
-            <!--begin::Card header-->
-            <div class="card-header mt-6">
-                <!--begin::Card title-->
-                <div class="card-title">
-                    <!--begin::Search-->
-                    <table>
-
-
-                        <thead>
-                            <tr>
-                                <!--begin::Col-->
-                                <div class="col-xxl-6 mb-md-5 mb-xl-10">
-                                    <!--begin::Row-->
-                                    <div class="row g-5 g-xl-10">
-                                        <!--begin::Col-->
-                                        <div class="col-md-6 col-xl-6 mb-xxl-10">
-                                            <th>
-                                                <!--begin::Card widget 5-->
-                                                <div class="card card-flush h-md-50 mb-xl-10">
-                                                    <!--begin::Header-->
-                                                    <div class="card-header pt-5">
-                                                        <!--begin::Title-->
-                                                        <div class="card-title d-flex flex-column">
-                                                            <!--begin::Info-->
-                                                            <div class="d-flex align-items-center">
-                                                                <!--begin::Amount-->
-                                                                <span
-                                                                    class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">12</span>
-                                                                <!--end::Amount-->
-
-                                                                <!--begin::Badge-->
-                                                                <span class="badge badge-primary text-white fs-base">
-                                                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
-
-                                                                    <!--end::Svg Icon-->
-                                                                    Jours
-                                                                </span>
-                                                                <!--end::Badge-->
-                                                            </div>
-                                                            <!--end::Info-->
-
-                                                            <!--begin::Subtitle-->
-                                                            <span class="fs-6 fw-bolder text-gray-800 d-block mb-2">Conges
-                                                                Total Par
-                                                                Ans</span>
-                                                            <!--end::Subtitle-->
-                                                        </div>
-                                                        <!--end::Title-->
-                                                    </div>
-                                                    <!--end::Header-->
-
-
-                                                </div>
-                                                <!--end::Card widget 5-->
-                                        </div>
-                                        <!--end::Col-->
-                                        </th>
-                                        <th>
-                                            <!--begin::Card widget 5-->
-                                            <div class="card card-flush h-md-50 mb-xl-10">
-                                                <!--begin::Header-->
-                                                <div class="card-header pt-5">
-                                                    <!--begin::Title-->
-                                                    <div class="card-title d-flex flex-column">
-                                                        <!--begin::Info-->
-                                                        <div class="d-flex align-items-center">
-                                                            <!--begin::Amount-->
-                                                            <span
-                                                                class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">1,5</span>
-                                                            <!--end::Amount-->
-
-                                                            <!--begin::Badge-->
-                                                            <span class="badge badge-primary fs-base">
-                                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
-
-                                                                <!--end::Svg Icon-->
-                                                                Jours
-                                                            </span>
-                                                            <!--end::Badge-->
-                                                        </div>
-                                                        <!--end::Info-->
-
-                                                        <!--begin::Subtitle-->
-                                                        <span class="fs-6 fw-bolder text-gray-800 d-block mb-2">Conges
-                                                            Total Par
-                                                            Mois</span>
-                                                        <!--end::Subtitle-->
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Header-->
-
-
-                                            </div>
-                                            <!--end::Card widget 5-->
-                                    </div>
-                                    <!--end::Col-->
-                                    </th>
-
-                            </tr>
-                        </thead>
-
-                    </table>
-                </div>
-            </div>
-        </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+        <h1> Listes des demandes</h1>
     </div>
-
     <!--begin::Post-->
     <div class="post fs-6 d-flex flex-column-fluid btn-sm " id="kt_post">
         <!--begin::Container-->
         <div class=" container-xxl ">
-            <span class="fs-6 fw-bolder text-gray-800 d-block mb-2" for="statut">Rechercher par status :</span>
+            <span class="fs-6 fw-bolder text-gray-800 d-block mb-2" for="statut">Rechercher par statuts</span>
             <form action="<?php echo e(route('conges.index')); ?>" method="GET" class="d-flex">
 
                 <div class="d-flex align-items-center btn-sm  position-relative my-1 me-5 mb-3">
@@ -145,7 +36,9 @@
                 </div>
             </form>
 
-
+            <?php if(session('success')): ?>
+            <div class="alert alert-success"><?php echo e(session('success')); ?></div>
+        <?php endif; ?>
 
             <!--begin::Card-->
             <div class="card card-flush ">
@@ -154,6 +47,7 @@
                     <!--begin::Card title-->
                     <div class="card-title">
                         <!--begin::Search-->
+
 
                         <div class="d-flex align-items-center position-relative my-1 me-5">
 
@@ -180,13 +74,11 @@
 
 
 
-                    <?php if(session('success')): ?>
-                        <div class="alert alert-success"><?php echo e(session('success')); ?></div>
-                    <?php endif; ?>
 
 
                     <!--end::Card widget 8-->
                     <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
+
                         <thead>
                             <tr>
                                 <th>N°</th>
@@ -194,7 +86,7 @@
                                 <th>Date début</th>
                                 <th>Date fin</th>
                                 <th>Type congé</th>
-                                <th>status</th>
+                                <th>statuts</th>
                                 <th>Nombre de jour</th>
                                 <th>Solde</th>
 
@@ -251,7 +143,7 @@
                                                 method="POST">
                                                 <?php echo csrf_field(); ?>
                                                 <button type="submit"
-                                                    class="btn btn-sm   btn-success ml-2">Accepter</button>
+                                                    class="btn btn-sm mb-3   btn-success ml-2">Accepter</button>
                                             </form>
 
                                             <!-- Formulaire pour refuser le congé -->
@@ -259,7 +151,7 @@
                                                 action="<?php echo e(route('conges.congestate', ['status' => 'refuse', 'congeId' => $conge->id])); ?>"
                                                 method="POST">
                                                 <?php echo csrf_field(); ?>
-                                                <button type="submit" class="btn btn-sm  btn-danger">Refuser</button>
+                                                <button type="submit" class="btn btn-sm mb-3 btn-danger">Refuser</button>
                                             </form>
                                         <?php endif; ?>
                                     </td>

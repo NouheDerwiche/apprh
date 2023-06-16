@@ -46,18 +46,27 @@
                                     <strong>Nom</strong>
                                     {!! Form::text('name', null, ['placeholder' => 'Nom', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <strong>Prénom</strong>
                                     {!! Form::text('prenom', null, ['placeholder' => 'Prénom', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('prenom')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <strong>Téléphone</strong>
                                     {!! Form::text('phone', null, ['placeholder' => 'phone', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('phone')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
 
 
@@ -66,12 +75,18 @@
                                     <strong>Address</strong>
                                     {!! Form::text('address', null, ['placeholder' => 'address', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('address')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <strong>Cin</strong>
                                     {!! Form::text('cin', null, ['placeholder' => 'cin', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('cin')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
 
 
@@ -84,30 +99,45 @@
                                     <strong>Matricule</strong>
                                     {!! Form::text('num_emp', null, ['placeholder' => 'num_emp', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('num_emp')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <strong>Ville</strong>
                                     {!! Form::text('ville', null, ['placeholder' => 'ville', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('ville')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <strong>Code postal</strong>
                                     {!! Form::text('codepostal', null, ['placeholder' => 'codepostal', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('codepostal')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <strong>Date de naissance</strong>
                                     {!! Form::text('date_naiss', null, ['placeholder' => 'date_naiss', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('date_naiss')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <strong>Salaire</strong>
                                     {!! Form::text('salaire', null, ['placeholder' => 'salaire', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('salaire')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -115,6 +145,9 @@
                                     <strong>Solde</strong>
                                     {!! Form::text('solde', null, ['placeholder' => 'solde', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('solde')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -123,12 +156,18 @@
                                     {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) !!}
 
                                 </div>
+                                @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <strong>Mot de passe</strong>
                                     {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']) !!}
                                 </div>
+                                @error('password')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -136,6 +175,9 @@
                                     {!! Form::password('confirm-password', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) !!}
 
                                 </div>
+                                @error('confirm-password')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -143,6 +185,9 @@
                                     {!! Form::select('roles[]', $roles, [], ['class' => 'form-control']) !!}
 
                                 </div>
+                                @error('roles')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -151,6 +196,9 @@
                                         style="color: rgb(29, 115, 244);">
 
                                 </div>
+                                @error('avatar')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
 
 

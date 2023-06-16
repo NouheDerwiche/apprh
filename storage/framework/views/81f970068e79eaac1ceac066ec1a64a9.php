@@ -200,7 +200,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-
+                            <?php if(Auth::user()->hasRole('Admin')): ?>
 
                             <div class="menu-item">
                                 <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('users.index')); ?>"><span
@@ -220,6 +220,39 @@ License: For each use you must have a valid license purchased only from above li
                                     </span><span class="menu-title">Utilisateurs</span></a>
                                 <!--end:Menu link-->
                             </div>
+
+
+                            <?php endif; ?>
+
+
+                            <?php if(Auth::user()->hasRole('Directeur RH')): ?>
+
+                            <div class="menu-item">
+                                <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('users.index')); ?>"><span
+                                        class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
+                                        <span class="svg-icon svg-icon-2"><svg width="24" height="24"
+                                                viewbox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
+                                                    fill="currentColor"></path>
+                                                <rect opacity="0.3" x="8" y="3" width="8"
+                                                    height="8" rx="4" fill="currentColor"></rect>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span><span class="menu-title">Utilisateurs</span></a>
+                                <!--end:Menu link-->
+                            </div>
+
+
+                            <?php endif; ?>
+
+
+
+
+                            <?php if(Auth::user()->hasRole('Admin')): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('roles.index')); ?>"><span
                                         class="menu-icon">
@@ -239,6 +272,31 @@ License: For each use you must have a valid license purchased only from above li
                                     </span><span class="menu-title">Roles</span></a>
                                 <!--end:Menu link-->
                             </div>
+
+<?php endif; ?>
+
+                            <?php if(Auth::user()->hasRole('Directeur RH')): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('roles.index')); ?>"><span
+                                        class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs042.svg-->
+                                        <span class="svg-icon svg-icon-2"><svg width="24" height="24"
+                                                viewbox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M18 21.6C16.6 20.4 9.1 20.3 6.3 21.2C5.7 21.4 5.1 21.2 4.7 20.8L2 18C4.2 15.8 10.8 15.1 15.8 15.8C16.2 18.3 17 20.5 18 21.6ZM18.8 2.8C18.4 2.4 17.8 2.20001 17.2 2.40001C14.4 3.30001 6.9 3.2 5.5 2C6.8 3.3 7.4 5.5 7.7 7.7C9 7.9 10.3 8 11.7 8C15.8 8 19.8 7.2 21.5 5.5L18.8 2.8Z"
+                                                    fill="currentColor"></path>
+                                                <path opacity="0.3"
+                                                    d="M21.2 17.3C21.4 17.9 21.2 18.5 20.8 18.9L18 21.6C15.8 19.4 15.1 12.8 15.8 7.8C18.3 7.4 20.4 6.70001 21.5 5.60001C20.4 7.00001 20.2 14.5 21.2 17.3ZM8 11.7C8 9 7.7 4.2 5.5 2L2.8 4.8C2.4 5.2 2.2 5.80001 2.4 6.40001C2.7 7.40001 3.00001 9.2 3.10001 11.7C3.10001 15.5 2.40001 17.6 2.10001 18C3.20001 16.9 5.3 16.2 7.8 15.8C8 14.2 8 12.7 8 11.7Z"
+                                                    fill="currentColor"></path>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span><span class="menu-title">Roles</span></a>
+                                <!--end:Menu link-->
+                            </div>
+<?php endif; ?>
+
                             <div class="menu-item">
                                 <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('holidays.index')); ?>"><span
                                         class="menu-icon">
@@ -259,6 +317,7 @@ License: For each use you must have a valid license purchased only from above li
                                     </span><span class="menu-title">Jours Fériés</span></a>
                                 <!--end:Menu link-->
                             </div>
+
                             <?php if(Auth::user()->hasRole('Admin')): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
@@ -363,10 +422,30 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
+                        <?php if(Auth::user()->hasRole('Admin')): ?>
+                        <div class="menu-item">
+                            <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('projets.index')); ?>"><span
+                                    class="menu-icon">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
+                                    <span class="svg-icon svg-icon-2"><svg width="24" height="24"
+                                            viewbox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.3"
+                                                d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z"
+                                                fill="currentColor"></path>
+                                            <path
+                                                d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span><span class="menu-title">Projets</span></a>
+                            <!--end:Menu link-->
+                        </div>
+<?php endif; ?>
 
 
-
-
+                        <?php if(Auth::user()->hasRole('Directeur RH')): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('projets.index')); ?>"><span
                                         class="menu-icon">
@@ -386,6 +465,10 @@ License: For each use you must have a valid license purchased only from above li
                                     </span><span class="menu-title">Projets</span></a>
                                 <!--end:Menu link-->
                             </div>
+<?php endif; ?>
+
+<?php if(Auth::user()->hasRole('Directeur RH')): ?>
+
                             <div class="menu-item">
                                 <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('tache.index')); ?>"><span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
@@ -406,11 +489,38 @@ License: For each use you must have a valid license purchased only from above li
                                     </span><span class="menu-title">Taches</span></a>
                                 <!--end:Menu link-->
                             </div>
+<?php endif; ?>
+
+
+<?php if(Auth::user()->hasRole('employe')): ?>
+
+                            <div class="menu-item">
+                                <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('tache.index')); ?>"><span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
+                                        <span class="svg-icon svg-icon-2"><svg width="24" height="24"
+                                                viewbox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.3"
+                                                    d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z"
+                                                    fill="currentColor"></path>
+                                                <path d="M20 8L14 2V6C14 7.10457 14.8954 8 16 8H20Z"
+                                                    fill="currentColor"></path>
+                                                <path
+                                                    d="M10.3629 14.0084L8.92108 12.6429C8.57518 12.3153 8.03352 12.3153 7.68761 12.6429C7.31405 12.9967 7.31405 13.5915 7.68761 13.9453L10.2254 16.3488C10.6111 16.714 11.215 16.714 11.6007 16.3488L16.3124 11.8865C16.6859 11.5327 16.6859 10.9379 16.3124 10.5841C15.9665 10.2565 15.4248 10.2565 15.0789 10.5841L11.4631 14.0084C11.1546 14.3006 10.6715 14.3006 10.3629 14.0084Z"
+                                                    fill="currentColor"></path>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span><span class="menu-title">Taches</span></a>
+                                <!--end:Menu link-->
+                            </div>
+<?php endif; ?>
+
 
 
 
                             <div class="menu-item">
-                                <!--begin:Menu link--><a class="menu-link" href="apps/calendar.html"><span
+                                <!--begin:Menu link--><a class="menu-link" href="<?php echo e(route('fiche_de_paie.index')); ?>"><span
                                         class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                         <span class="svg-icon svg-icon-2"><svg width="24" height="24"

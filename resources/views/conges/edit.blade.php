@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="status" class="col-md-4 col-form-label text-md-right"><strong>{{ __('Statut') }}</strong></label>
+                            <label for="status" class="col-md-4 col-form-label text-md-right"><strong>{{ __('Statuts') }}</strong></label>
 
                             <div class="col-md-6  mb-3">
                                 <select id="status" name="status" class="form-control @error('status') is-invalid @enderror">
