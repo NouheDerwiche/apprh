@@ -52,19 +52,11 @@ class userController extends Controller
         $user = Auth::user();
         $solde = $user->solde;
 
-
         $params = Parametre::firstOrFail();
 
         $isUpdatedThisMonth = Carbon::createFromFormat('Y-m-d H:i:s', $params->last_solde_updated_at)->isCurrentMonth();
 
-
-
         return view('users.index', compact('data', 'isUpdatedThisMonth'))->with('i', ($request->input('page', 1) - 1) * 5);
-
-
-
-
-
 
  // Récupérer les rôles des utilisateurs depuis la base de données
  $roles = Role::pluck('name');
@@ -84,39 +76,26 @@ class userController extends Controller
      ]);
  }
 
- //prespectif :
+
 
  // Convertir les données en format JSON
  $pieDataJson = $pieData->toJson();
 
- // ...
+
 
  return view('chartjs', compact('pieDataJson'));
-
-
-
-
-
+        
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
         return view('users.create', compact('roles'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -164,36 +143,14 @@ class userController extends Controller
             ->with('success', 'Utilisateur créé avec succès');
     }
 
-    // Set initial balance to 2.5
-    //$user->solde = 2.5;
-    //$user->save();
-
-    // Check if the user has exceeded 30 days
-/*  $daysSinceCreation = now()->diffInDays($user->created_at);
-if ($daysSinceCreation > 30) {
-// Add 1.5 to the balance if more than 30 days have passed
-$user->solde += 1.5;
-$user->save();
-
-} */
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
+   
     public function show($id)
     {
         $user = User::find($id);
         return view('users.show', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $user = User::find($id);
@@ -203,13 +160,7 @@ $user->save();
         return view('users.edit', compact('user', 'roles', 'userRole'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -240,12 +191,7 @@ $user->save();
             ->with('success', 'Utilisateur mis à jour avec succès');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function destroy($id)
     {
         $user = User::find($id);
@@ -281,40 +227,6 @@ $user->save();
         return back()->with('error', 'Impossible de mettre à jour solde pour le moment.');
     }
 
-/*public function updateSolde()
-{
-$today = Carbon::now();
-$params = Parametre::first();
-
-$lastSoldeUpdatedAt = Carbon::createFromFormat('Y-m-d H:i:s', $params->last_solde_updated_at);
-if ($today->month > $lastSoldeUpdatedAt->month && $today->day > 20) {
-$users = User::increment('solde', 1.5);
-
-//update table parametres
-$params = Parametre::first();
-$params->last_solde_updated_at = $today;
-$params->save();
-
-return $users;
-} return view('users.index');
-}
- */
-
-/*
-public function updateSolde(){
-$today = Carbon::now();
-$params =  Parametre::first();
-
-if($today->month > Carbon::date($params->last_solde_updated_at)->format('m') && $today->day > 20){
-$users = User::increment('solde' , 1.5 );
-
-//update table parametres
-$params =  Parametre::first();
-$params->last_solde_updated_at =$today;
-
-return $users;
-}
- */
     protected function sendEmail(User $user, $password)
     {
         Mail::to($user->email)->send(new NouveauCompteMail($user, $password));
