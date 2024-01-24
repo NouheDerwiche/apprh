@@ -19,26 +19,24 @@ class HolidayController extends Controller
          $this->middleware('permission:jours fériés-Modifier', ['only' => ['edit','update']]);
          $this->middleware('permission:jours fériés-Supprimer', ['only' => ['destroy']]);
     }
-/* 'jours fériés-Voir-liste',
-                     'jours fériés-Ajouter',
-                     'jours fériés-Modifier',
-                     'jours fériés-Supprimer',*/
-                     public function index(Request $request)
-                     {
-                         $search = $request->input('search');
 
-                         $query = DB::table('holidays');
+   public function index(Request $request)
+     {
+      $search = $request->input('search');
 
-                         if (!empty($search)) {
-                             $query->where('name', 'LIKE', "%$search%")
-                                 ->orWhere('date', 'LIKE', "%$search%")
-                                 ->orWhere('date2', 'LIKE', "%$search%");
-                         }
+      $query = DB::table('holidays');
 
-                         $holidays = $query->get();
+        if (!empty($search)) {
+             $query->where('name', 'LIKE', "%$search%")
+             ->orWhere('date', 'LIKE', "%$search%")
+             ->orWhere('date2', 'LIKE', "%$search%");
+                       
+     }
+              $holidays = $query->get();
 
-                         return view('holidays.index', compact('holidays'));
-                     }
+          return view('holidays.index', compact('holidays'));
+                     
+     }
 
     public function create()
     {
