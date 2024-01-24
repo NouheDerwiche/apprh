@@ -66,10 +66,7 @@ class CongeController extends Controller
             'status' => 'required|in:en attente,accepte,refuse',
         ]);
 
-        //if( type conge solde  )
-        // $user->solde = $user->solde - $duree
-        //$user ->save()
-
+       
         // Create the "conge" model
         Conge::create([
             'user_id' => $request->user_id,
@@ -84,17 +81,7 @@ class CongeController extends Controller
 
 
     }
-    /*
-    public function congestate($x, $y)
-    {
-
-    $c = Conge::find($y);
-    $c->status = $x;
-    $c->save();
-
-    return redirect()->route('conges.index');
-
-    }*/
+   
 
     public function edit(Conge $conge)
     {
@@ -112,26 +99,10 @@ class CongeController extends Controller
             'status' => 'required|in:en attente,accepte,refuse',
         ]);
 
-        //hedha
-        // retrieve user using user_id from request
-        /*       $type_conge = $request->type_conge;
-        if ($request->status == 'accepte' && $request->type_conge == 'conge solde' ) {
-        $user->solde = abs($user->solde - $conge->duree);
-        $user->save();
-        } else if ($request->status == 'accepte' && $request->type_conge == 'conge malade') {
-        if ($user->solde >= $conge->duree) {
-        $user->solde = ABS($user->solde - $conge->duree);
-        $user->save();
-        } else {
-        $type_conge = 'conge non solde';
-        }
-        }
-         */
+       
         $user = User::find($request->user_id);
 
-        // echo $request->conge_duree;
-        // echo "<br>";
-        // echo $user->solde;
+       
         if (
             $request->status == 'accepte'
             && ($request->type_conge == 'conge solde' || $request->type_conge == 'conge malade')
